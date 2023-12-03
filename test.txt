@@ -4,5 +4,7 @@ Hello World
 This is in the TEST_GA
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head></head>
+<body><\body>
 </html>
