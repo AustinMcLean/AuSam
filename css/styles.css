@@ -8,9 +8,12 @@ h1 {
 }
 h2 {
     text-align: center;
+    color: #e45f00;
 }
 
 img {
-    width: 2000;
-    height: 1000;
-  }
+    width: 80%;
+    height: 60%;
+    display: block;
+    margin: 0 auto;
+}
