@@ -52,3 +52,26 @@ img {
     display: block;
     margin: 15px auto;
 }
+
+
+/*The following is for the Info page*/
+
+#info_page{
+    margin: 100px auto;
+    text-align: center;
+    text-decoration: none;
+}
+
+details{
+    margin: 10px 100px;
+    text-align: center;
+    background-color: rgb(204, 238, 176) ;
+}
+
+summary{
+    font-weight: bold;
+}
+
+/*End of Info page*/
+
+
