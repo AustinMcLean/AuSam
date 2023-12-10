@@ -3,13 +3,16 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-h1 {
+#header h1 {
     text-align: center;
-    text-decoration: underline;
+    font-size: 60px;
+    margin-bottom: 0;
 }
-h2 {
+
+#header h2 {
     text-align: center;
     color: #e45f00;
+    margin-top: 2px;
 }
 
 .navBar{
@@ -44,13 +47,45 @@ h2 {
       text-decoration: underline;
 }
 
-
-
 img {
     width: 80%;
     height: 60%;
     display: block;
     margin: 15px auto;
+}
+
+#wedding-day-schedule {
+    text-align: center;
+}
+
+.wedding-schedule:after {
+    content: ""; 
+    display: block;
+    margin: 0 auto;
+    width: 40%;
+    padding-top: 20px;
+    border-bottom: 1px solid #bbb;
+}
+
+#rsvp-button-home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+}
+
+#rsvp-button-home button {
+    border: none;
+    background-color: #e45f00;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 22px;
+    padding: 17px 12px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
 }
 
 
