@@ -110,3 +110,20 @@ summary{
 /*End of Info page*/
 
 
+/* Directions page */
+
+#directions-page {
+    display: flex;
+}
+
+#google-maps {
+    justify-content: right;
+    margin: 50px 50px;
+}
+
+.travel-options {
+    width: 49%;
+    margin: 30px 20px;
+}
+
+/* End of Directions page */
