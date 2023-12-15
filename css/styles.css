@@ -47,7 +47,7 @@ body {
       text-decoration: underline;
 }
 
-img {
+#home-image { /*changed css tag to only affect image on index.html*/
     width: 80%;
     height: 60%;
     display: block;
@@ -91,19 +91,19 @@ img {
 
 /*The following is for the Info page*/
 
-#info_page{
+#info_page {
     margin: 100px auto;
     text-align: center;
     text-decoration: none;
 }
 
-details{
+details {
     margin: 10px 100px;
     text-align: center;
     background-color: rgb(204, 238, 176) ;
 }
 
-summary{
+summary {
     font-weight: bold;
 }
 
@@ -127,3 +127,25 @@ summary{
 }
 
 /* End of Directions page */
+
+/*Photos page*/
+.photos {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap:18px;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 20px 10px;
+}
+
+.photos img{
+    width: 100%;
+    max-width: 500px;
+    height: 333px;
+    object-fit: cover;
+}
+
+/*End of Photos page*/
