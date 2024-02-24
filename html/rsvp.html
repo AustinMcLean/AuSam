@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8"/>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AuSam</title>
     <link rel="stylesheet" href="../css/styles.css">
 </head>
+
 <body>
     <header id="header">
         <h1>Austin & Samantha</h1>
@@ -23,14 +26,17 @@
     </header>
 
     <hr>
-    
-    <fieldset>
-        <label for="full-name">Full Name: <input id="full-name" name="full-name" type="text" required /></label>
-        <label for="attending">Attending: <input id="attending" name="attending" type="checkbox" required /></label>
-        <input type="submit" value="Submit" />
-    </fieldset>
+
+    <form id="attendance-form" action="https://httpbin.org/post" method="post">
+        <fieldset>
+            <label for="full-name">Full Name: <input id="full-name" name="full-name" type="text" required /></label>
+            <label for="attending">Attending: <input id="attending" name="attending" type="checkbox" required /></label>
+            <input type="submit" value="Submit" />
+        </fieldset>
+    </form>
+
+    <script src="../js/script.js"></script>
 
 </body>
-
 
 </html>
