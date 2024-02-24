@@ -173,3 +173,16 @@ summary {
 }
 
 /*End of Itinerary page*/
+
+/* RSVP page */
+
+label {
+    display: block;
+    margin: 1rem 1rem;
+  }
+
+input {
+    margin: 0rem 1rem;
+}
+
+/* End of RSVP page */
