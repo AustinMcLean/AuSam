@@ -1,5 +1,7 @@
+from django.contrib import messages
+from django.contrib.auth.hashers import check_password
 from django.http import JsonResponse
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, redirect, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from .models import TodoItem, RsvpEntry
 import json
@@ -19,6 +21,17 @@ def info(request):
 
 def rsvp(request):
     return render(request, "rsvp.html")
+
+def password_entry(request):
+    if request.method == 'POST':
+        password = request.POST.get('password')
+        hashed_password = 'pbkdf2_sha256$720000$bxVgEq8KwtwHB0VdjzGC39$C8wgOQUJaYUaSjVBZlJg4eNNg8ZeMZ1+DhAH7QDLtMM='
+        if check_password(password, hashed_password):
+            request.session['password_entered'] = True
+            return redirect('home')
+        else:
+            messages.error(request, 'Incorrect password')
+    return render(request, 'password_entry.html')
 
 @csrf_exempt
 def submit_rsvp(request):
