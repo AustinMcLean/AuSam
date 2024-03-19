@@ -152,12 +152,54 @@ input {
 }
 
 .attending-button.selected {
-    background-color: #FF4500; /* Burnt Orange color */
+    background-color: #e45f00; /* TODO: change this colour, it's too vibrant */ 
     color: white;
 }
 
-.attending-button :hover {
-    background-color: blue;
+.attending-button:hover {
+    background-color: #FF4500;  /* Burnt Orange color */
 }
 
 /* End of RSVP page */
+
+/* Password Entry page */
+
+.password-entry-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+    border-radius: 5px;
+  }
+  
+  .password-entry-container form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .password-entry-container .form-group {
+    margin-bottom: 10px;
+  }
+  
+  .password-entry-container button {
+    cursor: pointer;
+    padding: 10px;
+    border: none;
+    background-color: #e45f00;
+    color: white;
+    border-radius: 5px;
+  }
+  
+  .password-entry-container button:hover {
+    background-color: #FF4500;
+  }
+  
+  .error {
+    color: red;
+    font-weight: bold;
+  }
+
+/* End of Password Entry page */
