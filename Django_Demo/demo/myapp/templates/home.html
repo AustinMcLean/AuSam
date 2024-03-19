@@ -1,8 +1,9 @@
 {% extends "base.html" %} {% block title %} Home Page {% endblock %}
 {% block content %}
-<img id="home-image" src ="page-specific/home/AustinandSamEngagement-web_res.jpg" alt="Austin and Samantha engagement photo."/>
+{% load static %}
+<img id="home-image" src="{% static 'page-specific/home/AustinandSamEngagement-web_res.jpg' %}" alt="Austin and Samantha engagement photo."/>
 <div id="rsvp-button-home">
-    <button type="button">RSVP by 24 July 2024</button>
+    <button type="button" onclick="window.location.href=`{% url 'rsvp' %}`">RSVP by 24 July 2024</button>
 </div>
 <section id="wedding-day-schedule">
     <h2 class="wedding-schedule">Day of the Wedding</h2>
