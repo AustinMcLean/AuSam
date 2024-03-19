@@ -25,7 +25,7 @@ def rsvp(request):
 def password_entry(request):
     if request.method == 'POST':
         password = request.POST.get('password')
-        hashed_password = 'pbkdf2_sha256$720000$bxVgEq8KwtwHB0VdjzGC39$C8wgOQUJaYUaSjVBZlJg4eNNg8ZeMZ1+DhAH7QDLtMM='
+        hashed_password = 'pbkdf2_sha256$720000$Yl01oPWsAQ8oSoK2UoEqkR$U79iUPNPYODSSBJpa4mmNj2DTjZu7ZBynOMWwfpGtik='
         if check_password(password, hashed_password):
             request.session['password_entered'] = True
             return redirect('home')
