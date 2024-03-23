@@ -16,6 +16,9 @@ def todos(request):
     items = TodoItem.objects.all()
     return render(request, "todos.html", {"todos": items})
 
+def directions(request):
+    return render(request, "directions.html")
+
 def info(request):
     return render(request, "info.html")
 
