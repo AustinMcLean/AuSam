@@ -6,7 +6,10 @@ urlpatterns = [
     path("home/", views.home, name="home"),
     path("todos/", views.todos, name="Todos"),
     path("info/", views.info, name="info"),
+    path("directions/",views.directions, name="directions"),
     path("rsvp/", views.rsvp, name="rsvp"),
+    path("itinerary/", views.itinerary, name="itinerary"),
+    path("photos/", views.photos, name="photos"),
     path('submit-rsvp/', views.submit_rsvp, name="submit_rsvp"),
     path('password_entry/', views.password_entry, name='password_entry'),
 ]

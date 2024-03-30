@@ -16,6 +16,15 @@ def todos(request):
     items = TodoItem.objects.all()
     return render(request, "todos.html", {"todos": items})
 
+def directions(request):
+    return render(request, "directions.html")
+
+def itinerary(request):
+    return render(request, "itinerary.html")
+
+def photos(request):
+    return render(request, "photos.html")
+
 def info(request):
     return render(request, "info.html")
 

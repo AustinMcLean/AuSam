@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AuSam</title>
+    <title>{%block title%}AuSam{% endblock %}</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
   </head>
@@ -14,9 +14,9 @@
       <nav class="navBar">
           <ul>
               <li><a href="{% url 'home' %}">Home</a></li>
-              <li><a href="html/directions.html">Getting There</a></li>
-              <li><a href="itinerary.html">3 Day Itinerary</a></li>
-              <li><a href="photos.html">A&S Photos</a></li>
+              <li><a href="{% url 'directions' %}">Getting There</a></li>
+              <li><a href="{% url 'itinerary' %}">3 Day Itinerary</a></li>
+              <li><a href="{% url 'photos' %}">A&S Photos</a></li>
               <li><a href="capture.html">Capture our Love</a></li>
               <li><a href="{% url 'info' %}">Info</a></li>
               <li><a href="{% url 'rsvp' %}">RSVP</a></li>
