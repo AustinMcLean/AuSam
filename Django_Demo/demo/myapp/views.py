@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.hashers import check_password
 from django.http import JsonResponse
@@ -37,6 +38,7 @@ def password_entry(request):
         hashed_password = 'pbkdf2_sha256$720000$Yl01oPWsAQ8oSoK2UoEqkR$U79iUPNPYODSSBJpa4mmNj2DTjZu7ZBynOMWwfpGtik='
         if check_password(password, hashed_password):
             request.session['password_entered'] = True
+            request.session.set_expiry(settings.SESSION_COOKIE_AGE)
             return redirect('home')
         else:
             messages.error(request, 'Incorrect password')
