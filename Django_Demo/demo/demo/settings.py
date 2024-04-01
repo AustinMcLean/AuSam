@@ -126,5 +126,5 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Session settings
-SESSION_COOKIE_AGE = 1800  # 30 minutes
+SESSION_COOKIE_AGE = 3600  # 60 minutes
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
