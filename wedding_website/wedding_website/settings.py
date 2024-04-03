@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-*qc#rugt%r*ir=)gy=d3_r&oq$b@*5s2j3k9r8llig+==p$8p3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['http://ausam2024.com', 'ausam2024.com', 'www.ausam2024.com', 'http://www.ausam2024.com', 'https://ausam-wedding-website-9153757c3bde.herokuapp.com/']
 
 
 # Application definition
