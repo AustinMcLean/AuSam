@@ -1,13 +1,11 @@
 *.pyc
 *.pyo
 __pycache__
-db.sqlite3
 .env
 *.pyc
 *.pyo
 *.pyd
 *.db
-*.sqlite3
 *.log
 *.pot
 *.pyc
