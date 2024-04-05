@@ -71,7 +71,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'wedding_website.wsgi.application'
+WSGI_APPLICATION = 'AuSam.wedding_website.wsgi.application'
 
 
 # Database
