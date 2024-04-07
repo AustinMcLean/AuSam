@@ -155,9 +155,28 @@ summary {
     height: 333px;
     object-fit: cover;
 }
-
 /*End of Photos page*/
 
+/*People Page*/
+.hisPeople {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 10px;
+}
+
+.hisPeople img {
+    width: 100%;
+    max-width: 500px;
+    height: 333px;
+    object-fit: cover;
+}
+/*End of People Page*/
 
 /*Itinerary page*/
 #itinerary_wednesday {

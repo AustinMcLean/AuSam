@@ -29,6 +29,9 @@ def photos(request):
 def info(request):
     return render(request, "info.html")
 
+def people(request):
+    return render(request, "people.html")
+
 def rsvp(request):
     return render(request, "rsvp.html")
 

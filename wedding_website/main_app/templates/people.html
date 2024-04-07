@@ -1,0 +1,29 @@
+{% extends "base.html" %} {% block title %} AuSam - Our People {% endblock %}
+{% block content %}
+
+<body>
+    <hr>
+
+    <div class="hisPeople">
+        <figure>
+            {% load static %}
+            <img src="{% static 'page-specific/home/AustinandSamEngagement-web_res.jpg' %}" alt="Picture 1">
+            <figcaption>Person 1</figcaption>
+        </figure>
+
+        <figure>
+            {% load static %}
+            <img src="{% static 'page-specific/home/AustinandSamEngagement-web_res.jpg' %}" alt="Picture 1">
+            <figcaption>Person 2</figcaption>
+        </figure>
+
+        <figure>
+            {% load static %}
+            <img src="{% static 'page-specific/home/AustinandSamEngagement-web_res.jpg' %}" alt="Picture 1">
+            <figcaption>Person 3</figcaption>
+        </figure>
+
+    </div>
+
+</body>
+{% endblock %}

@@ -10,6 +10,7 @@ urlpatterns = [
     path("rsvp/", views.rsvp, name="rsvp"),
     path("itinerary/", views.itinerary, name="itinerary"),
     path("photos/", views.photos, name="photos"),
+    path("people/", views.people, name="people"),
     path('submit-rsvp/', views.submit_rsvp, name="submit_rsvp"),
     path('password_entry/', views.password_entry, name='password_entry'),
 ]
