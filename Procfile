@@ -1,0 +1,1 @@
+web: gunicorn wedding_website.site_config.wsgi

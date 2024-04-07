@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+import dj_database_url
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,7 +27,7 @@ SECRET_KEY = 'django-insecure-*qc#rugt%r*ir=)gy=d3_r&oq$b@*5s2j3k9r8llig+==p$8p3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['http://ausam2024.com', 'ausam2024.com', 'www.ausam2024.com', 'http://www.ausam2024.com', 'ausam-wedding-website-9153757c3bde.herokuapp.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -37,21 +39,22 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'main_app'
+    'wedding_website.main_app'
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'main_app.middleware.PasswordMiddleware',
+    'wedding_website.main_app.middleware.PasswordMiddleware',
 ]
 
-ROOT_URLCONF = 'wedding_website.urls'
+ROOT_URLCONF = 'wedding_website.site_config.urls'
 
 TEMPLATES = [
     {
@@ -69,17 +72,14 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'wedding_website.wsgi.application'
+WSGI_APPLICATION = 'wedding_website.site_config.wsgi.application'
 
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(default='postgres://localhost')
 }
 
 
