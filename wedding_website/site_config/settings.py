@@ -53,7 +53,7 @@ MIDDLEWARE = [
     'main_app.middleware.PasswordMiddleware',
 ]
 
-ROOT_URLCONF = 'wedding_website.wedding_website.urls'
+ROOT_URLCONF = 'wedding_website.site_config.urls'
 
 TEMPLATES = [
     {
@@ -71,7 +71,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'wedding_website.wedding_website.wsgi.application'
+WSGI_APPLICATION = 'wedding_website.site_config.wsgi.application'
 
 
 # Database
