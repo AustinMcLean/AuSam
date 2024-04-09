@@ -1,5 +1,5 @@
 """
-WSGI config for wedding_website project.
+WSGI config for AuSam project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

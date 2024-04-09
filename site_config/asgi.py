@@ -1,5 +1,5 @@
 """
-ASGI config for wedding_website project.
+ASGI config for AuSam project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
