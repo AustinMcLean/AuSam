@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'wedding_website.site_config.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'site_config.settings')
 
 application = get_wsgi_application()

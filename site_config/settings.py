@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'wedding_website.main_app'
+    'main_app'
 ]
 
 MIDDLEWARE = [
@@ -51,10 +51,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'wedding_website.main_app.middleware.PasswordMiddleware',
+    'main_app.middleware.PasswordMiddleware',
 ]
 
-ROOT_URLCONF = 'wedding_website.site_config.urls'
+ROOT_URLCONF = 'site_config.urls'
 
 TEMPLATES = [
     {
@@ -72,7 +72,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'wedding_website.site_config.wsgi.application'
+WSGI_APPLICATION = 'site_config.wsgi.application'
 
 
 # Database
