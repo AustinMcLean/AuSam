@@ -1,5 +1,5 @@
 """
-URL configuration for wedding_website project.
+URL configuration for AuSam project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.0/topics/http/urls/
@@ -19,5 +19,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("", include("wedding_website.main_app.urls"))
+    path("", include("main_app.urls"))
 ]

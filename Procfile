@@ -1,1 +1,1 @@
-web: gunicorn wedding_website.site_config.wsgi
+web: gunicorn site_config.wsgi
