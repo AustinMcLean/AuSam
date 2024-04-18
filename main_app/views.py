@@ -45,6 +45,26 @@ def password_entry(request):
     return render(request, 'password_entry.html')
 
 @csrf_exempt
+def get_invite(request):
+    if request.method == 'GET':
+        name = request.GET.get('name')
+        print(name)
+
+        try:
+            invite = RsvpEntry.objects.get(name=name)
+            print(invite)
+            print(invite.name)
+            print(invite.attending)
+            return JsonResponse({
+                'fullName': invite.name,
+                'attending': invite.attending
+            })
+        except RsvpEntry.DoesNotExist:
+            return JsonResponse({'error': 'No invite found for given name.'}, status=404)
+
+    return JsonResponse({'error': 'Invalid request method'}, status=400)
+
+@csrf_exempt
 def submit_rsvp(request):
     if request.method == 'POST':
 

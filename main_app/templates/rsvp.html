@@ -22,18 +22,64 @@
 
 
         </fieldset>
-
-        <script>
-            function handleButtonClick(option) {
-                // Update the hidden input value based on the clicked button
-                document.getElementById('attendingInput').value = option;
-    
-                // Style the buttons to indicate the selected option (optional)
-                document.getElementById('acceptedButton').classList.toggle('selected', option === 'accepted');
-                document.getElementById('declineButton').classList.toggle('selected', option === 'decline');
-            }
-        </script>
     </form>
+
+    <div id="nameModal" class="modal">
+        <div class="modal-content">
+          <h2>Please enter your name</h2>
+          <form id="name-form">
+            <input type="text" id="name-input" required>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+
+    <script>
+        // Show the modal when the page loads
+        window.onload = function() {
+            document.getElementById('nameModal').style.display = 'block';
+        };
+
+        // When the name form is submitted, send an AJAX request to the server
+        document.getElementById('name-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            var name = document.getElementById('name-input').value;
+
+            fetch('/get_invite?name=' + name)
+            .then(response => response.json())
+            .then(data => {
+                // Populate the form fields with the received data
+                document.getElementById('full-name').value = data.fullName;
+                document.getElementById('attendingInput').value = data.attending;
+
+                // Toggle the buttons based on the attending value
+                var acceptedButton = document.getElementById('acceptedButton');
+                var declineButton = document.getElementById('declineButton');
+
+                if (data.attending === 'accepted') {
+                    acceptedButton.classList.add('selected');
+                    declineButton.classList.remove('selected');
+                } 
+                else if (data.attending === 'decline') {
+                    acceptedButton.classList.remove('selected');
+                    declineButton.classList.add('selected');
+                }
+
+                // Close the modal
+                document.getElementById('nameModal').style.display = 'none';
+            });
+        });
+
+        function handleButtonClick(option) {
+            // Update the hidden input value based on the clicked button
+            document.getElementById('attendingInput').value = option;
+
+            // Style the buttons to indicate the selected option (optional)
+            document.getElementById('acceptedButton').classList.toggle('selected', option === 'accepted');
+            document.getElementById('declineButton').classList.toggle('selected', option === 'decline');
+        }
+    </script>
 
 </body>
 

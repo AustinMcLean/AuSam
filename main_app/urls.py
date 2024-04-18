@@ -12,4 +12,5 @@ urlpatterns = [
     path("photos/", views.photos, name="photos"),
     path('submit-rsvp/', views.submit_rsvp, name="submit_rsvp"),
     path('password_entry/', views.password_entry, name='password_entry'),
+    path('get_invite/', views.get_invite, name='get_invite'),
 ]
