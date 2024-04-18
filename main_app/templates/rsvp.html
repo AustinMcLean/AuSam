@@ -4,26 +4,6 @@
 <body>
     <hr>
 
-    <form id="attendance-form" action='submit-rsvp/' method="post">
-        <fieldset>
-            <label for="full-name">Full Name: <input id="full-name" name="full-name" type="text" required /></label>
-
-            <div class="attending-button-container">
-                <label for="acceptedButton">Attending:</label>
-                <button type="button" id="acceptedButton" class="attending-button" onclick="handleButtonClick('accepted')">Accepted</button>
-        
-                <label for="declineButton"></label>
-                <button type="button" id="declineButton" class="attending-button" onclick="handleButtonClick('decline')">Decline</button>
-                
-                <input type="hidden" id="attendingInput" name="attending" value="" required>
-            </div>
-
-            <button type="submit">Submit</button>
-
-
-        </fieldset>
-    </form>
-
     <div id="nameModal" class="modal">
         <div class="modal-content">
           <h2>Please enter your name</h2>
@@ -33,6 +13,28 @@
           </form>
         </div>
       </div>
+
+    <div id="attendance-form" style="display: none;">
+        <form id="attendance-form" action='submit-rsvp/' method="post">
+            <fieldset>
+                <label for="full-name">Full Name: <input id="full-name" name="full-name" type="text" required /></label>
+    
+                <div class="attending-button-container">
+                    <label for="acceptedButton">Attending:</label>
+                    <button type="button" id="acceptedButton" class="attending-button" onclick="handleButtonClick('accepted')">Accepted</button>
+            
+                    <label for="declineButton"></label>
+                    <button type="button" id="declineButton" class="attending-button" onclick="handleButtonClick('decline')">Decline</button>
+                    
+                    <input type="hidden" id="attendingInput" name="attending" value="" required>
+                </div>
+    
+                <button type="submit">Submit</button>
+    
+    
+            </fieldset>
+        </form>
+    </div>
 
     <script>
         // Show the modal when the page loads
@@ -66,8 +68,9 @@
                     declineButton.classList.add('selected');
                 }
 
-                // Close the modal
+                // Close the modal and show the attendance form
                 document.getElementById('nameModal').style.display = 'none';
+                document.getElementById('attendance-form').style.display = 'block';
             });
         });
 
