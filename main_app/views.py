@@ -4,7 +4,7 @@ from django.contrib.auth.hashers import check_password
 from django.http import JsonResponse
 from django.shortcuts import render, redirect, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from .models import TodoItem, RsvpEntry
+from .models import RsvpEntry
 import json
 import os
 
@@ -13,10 +13,6 @@ import os
 
 def home(request):
     return render(request, "home.html")
-
-def todos(request):
-    items = TodoItem.objects.all()
-    return render(request, "todos.html", {"todos": items})
 
 def directions(request):
     return render(request, "directions.html")
