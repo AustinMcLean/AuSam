@@ -4,18 +4,15 @@ from django.contrib.auth.hashers import check_password
 from django.http import JsonResponse
 from django.shortcuts import render, redirect, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from .models import TodoItem, RsvpEntry
+from .models import RsvpEntry
 import json
+import os
 
 # Create your views here.
 
 
 def home(request):
     return render(request, "home.html")
-
-def todos(request):
-    items = TodoItem.objects.all()
-    return render(request, "todos.html", {"todos": items})
 
 def directions(request):
     return render(request, "directions.html")
@@ -38,7 +35,7 @@ def rsvp(request):
 def password_entry(request):
     if request.method == 'POST':
         password = request.POST.get('password')
-        hashed_password = 'pbkdf2_sha256$720000$Yl01oPWsAQ8oSoK2UoEqkR$U79iUPNPYODSSBJpa4mmNj2DTjZu7ZBynOMWwfpGtik='
+        hashed_password = os.environ.get('HASHED_PASSWORD')
         if check_password(password, hashed_password):
             request.session['password_entered'] = True
             request.session.set_expiry(settings.SESSION_COOKIE_AGE)
@@ -46,6 +43,26 @@ def password_entry(request):
         else:
             messages.error(request, 'Incorrect password')
     return render(request, 'password_entry.html')
+
+@csrf_exempt
+def get_invite(request):
+    if request.method == 'GET':
+        name = request.GET.get('name')
+        print(name)
+
+        try:
+            invite = RsvpEntry.objects.get(name=name)
+            print(invite)
+            print(invite.name)
+            print(invite.attending)
+            return JsonResponse({
+                'fullName': invite.name,
+                'attending': invite.attending
+            })
+        except RsvpEntry.DoesNotExist:
+            return JsonResponse({'error': 'No invite found for given name.'}, status=404)
+
+    return JsonResponse({'error': 'Invalid request method'}, status=400)
 
 @csrf_exempt
 def submit_rsvp(request):

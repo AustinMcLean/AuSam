@@ -1,0 +1,89 @@
+{% extends "base.html" %} {% block title %} AuSam - RSVP {% endblock %}
+{% block content %}
+    
+<body>
+    <hr>
+
+    <div id="nameModal" class="modal">
+        <div class="modal-content">
+          <h2>Enter full name to retrieve invite</h2>
+          <form id="name-form">
+            <input type="text" id="name-input" required>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+
+    <div id="attendance-form" style="display: none;">
+        <form id="attendance-form" action='submit-rsvp/' method="post">
+            <fieldset>
+                <label for="full-name">Full Name: <input id="full-name" name="full-name" type="text" required /></label>
+    
+                <div class="attending-button-container">
+                    <label for="acceptedButton">Attending:</label>
+                    <button type="button" id="acceptedButton" class="attending-button" onclick="handleButtonClick('accepted')">Accepted</button>
+            
+                    <label for="declineButton"></label>
+                    <button type="button" id="declineButton" class="attending-button" onclick="handleButtonClick('decline')">Decline</button>
+                    
+                    <input type="hidden" id="attendingInput" name="attending" value="" required>
+                </div>
+    
+                <button type="submit">Submit</button>
+    
+    
+            </fieldset>
+        </form>
+    </div>
+
+    <script>
+        // Show the modal when the page loads
+        window.onload = function() {
+            document.getElementById('nameModal').style.display = 'block';
+        };
+
+        // When the name form is submitted, send an AJAX request to the server
+        document.getElementById('name-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            var name = document.getElementById('name-input').value;
+
+            fetch('/get_invite?name=' + name)
+            .then(response => response.json())
+            .then(data => {
+                // Populate the form fields with the received data
+                document.getElementById('full-name').value = data.fullName;
+                document.getElementById('attendingInput').value = data.attending;
+
+                // Toggle the buttons based on the attending value
+                var acceptedButton = document.getElementById('acceptedButton');
+                var declineButton = document.getElementById('declineButton');
+
+                if (data.attending === 'accepted') {
+                    acceptedButton.classList.add('selected');
+                    declineButton.classList.remove('selected');
+                } 
+                else if (data.attending === 'decline') {
+                    acceptedButton.classList.remove('selected');
+                    declineButton.classList.add('selected');
+                }
+
+                // Close the modal and show the attendance form
+                document.getElementById('nameModal').style.display = 'none';
+                document.getElementById('attendance-form').style.display = 'block';
+            });
+        });
+
+        function handleButtonClick(option) {
+            // Update the hidden input value based on the clicked button
+            document.getElementById('attendingInput').value = option;
+
+            // Style the buttons to indicate the selected option (optional)
+            document.getElementById('acceptedButton').classList.toggle('selected', option === 'accepted');
+            document.getElementById('declineButton').classList.toggle('selected', option === 'decline');
+        }
+    </script>
+
+</body>
+
+{% endblock %}
