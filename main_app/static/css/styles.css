@@ -48,8 +48,8 @@ body {
 }
 
 img {
-    width: 80%;
-    height: 60%;
+    width: 100%;
+    height: auto;
     display: block;
     margin: 15px auto;
 }
@@ -122,16 +122,43 @@ summary {
 
 #directions-page {
     display: flex;
-}
-
-#google-maps {
-    justify-content: right;
-    margin: 50px 50px;
+    flex-wrap: wrap;
+    width: 100%;
 }
 
 .travel-options {
-    width: 49%;
     margin: 30px 20px;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+#google-maps {
+    margin: 50px 0;
+}
+
+#directions-page p {
+    /* Make the text easy to read */
+    font-size: 16px;
+    line-height: 1.5;
+    color: #666;
+}
+
+#directions-page .travel-options {
+    flex: 1 0 60%; /* Take up 60% of the width on larger screens */
+    max-width: 60%; /* Take up 60% of the width on larger screens */
+}
+
+#directions-page #google-maps {
+    flex: 1 0 40%; /* Take up 40% of the width on larger screens */
+    max-width: 40%; /* Take up 40% of the width on larger screens */
+}
+
+@media (max-width: 768px) {
+    #directions-page .travel-options,
+    #directions-page #google-maps {
+        flex: 1 0 100%; /* Take up 100% of the width on smaller screens */
+        max-width: 100%; /* Take up 100% of the width on smaller screens */
+    }
 }
 
 /* End of Directions page */
@@ -239,6 +266,31 @@ input {
     width: 80%;
   }
 
+  @media (max-width: 768px) {
+    .modal {
+        font-size: 16px;
+        width: 80%;
+
+        h2 {
+            font-size: 22px;
+        }
+    }
+
+    .modal input,
+    .modal button {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .modal input {
+        margin-top: 5px;
+        margin-bottom: 10px;
+    }
+}
+
 /* End of RSVP page */
 
 /* Password Entry page */
@@ -283,6 +335,7 @@ input {
 
 /* End of Password Entry page */
 
+/* Media Queries */
 /* Hide the original navbar on smaller screens */
 @media (max-width: 992px) {
     .navbar-original {
@@ -297,6 +350,33 @@ input {
     }
 }
 
+@media (max-width: 768px) {
+    .navbar-original ul li a {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 768px) {
+    #rsvp-button-home button {
+        padding: 10px 8px;
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 768px) {
+    .wedding-schedule:after {
+        width: 60%;
+    }
+}
+
+/* end of Media Queries */
+
 .navbar {
     background-color: #fbf7f5 !important;
+}
+
+body, html {
+    padding: 0;
+    margin: 0;
+    width: 100%;
 }
