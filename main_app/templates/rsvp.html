@@ -12,27 +12,29 @@
             <button type="submit">Submit</button>
           </form>
         </div>
-      </div>
+    </div>
 
-    <div id="attendance-form" style="display: none;">
-        <form id="attendance-form" action='submit-rsvp/' method="post">
+    <div id="attendance-form-wrapper" style="display: none;">
+        <form id="attendance-form">
             <fieldset>
                 <label for="full-name">Full Name: <input id="full-name" name="full-name" type="text" required /></label>
     
                 <div class="attending-button-container">
                     <label for="acceptedButton">Attending:</label>
-                    <button type="button" id="acceptedButton" class="attending-button" onclick="handleButtonClick('accepted')">Accepted</button>
+                    <button type="button" id="acceptedButton" class="attending-button">Accepted</button>
             
                     <label for="declineButton"></label>
-                    <button type="button" id="declineButton" class="attending-button" onclick="handleButtonClick('decline')">Decline</button>
+                    <button type="button" id="declineButton" class="attending-button">Decline</button>
                     
                     <input type="hidden" id="attendingInput" name="attending" value="" required>
-                </div>
-    
-                <button type="submit">Submit</button>
-    
-    
+                </div>    
             </fieldset>
+        </form>
+    </div>
+
+    <div id="form-container-wrapper">
+        <form id="form-container" action="submit-rsvp/" method="post">
+            <button type="submit" id="submitButton">Submit</button>
         </form>
     </div>
 
@@ -40,6 +42,7 @@
         // Show the modal when the page loads
         window.onload = function() {
             document.getElementById('nameModal').style.display = 'block';
+            document.getElementById('form-container').style.display = 'none';
         };
 
         // When the name form is submitted, send an AJAX request to the server
@@ -51,37 +54,184 @@
             fetch('/get_invite?name=' + name)
             .then(response => response.json())
             .then(data => {
-                // Populate the form fields with the received data
-                document.getElementById('full-name').value = data.fullName;
-                document.getElementById('attendingInput').value = data.attending;
+                // process list of users on the invite
+                var allUsersOnInvite = data.all_users_on_invite;
 
-                // Toggle the buttons based on the attending value
-                var acceptedButton = document.getElementById('acceptedButton');
-                var declineButton = document.getElementById('declineButton');
+                allUsersOnInvite.forEach(user => {
 
-                if (data.attending === 'accepted') {
-                    acceptedButton.classList.add('selected');
-                    declineButton.classList.remove('selected');
-                } 
-                else if (data.attending === 'decline') {
-                    acceptedButton.classList.remove('selected');
-                    declineButton.classList.add('selected');
-                }
+                    // Get the original form and clone it
+                    let originalForm = document.getElementById('attendance-form');
+                    let form = originalForm.cloneNode(true);
 
-                // Close the modal and show the attendance form
-                document.getElementById('nameModal').style.display = 'none';
-                document.getElementById('attendance-form').style.display = 'block';
+                    // Update the form's ID
+                    form.id = `attendance-form-${user.name.replace(/ /g, "-")}`;
+                    console.log("form id: " + form.id);
+
+                    // Populate the form's fields
+                    let fullNameInput = form.querySelector('input[name="full-name"]');
+                    fullNameInput.value = user.name;
+                    console.log("full name: " + fullNameInput.value);
+
+                    let attendingInput = form.querySelector('input[name="attending"]');
+                    attendingInput.value = user.attending;
+                    console.log("attending: " + attendingInput.value);
+
+                    // Toggle the buttons based on the attending value
+                    let acceptedButton = form.querySelector('#acceptedButton');
+                    let declineButton = form.querySelector('#declineButton');
+
+                    // Check if buttons exist
+                    if (!acceptedButton || !declineButton) {
+                    console.log('Button not found');
+                    return;
+                    }
+
+                    acceptedButton.addEventListener('click', function(event) {
+                        event.stopPropagation();
+                        handleButtonClick(form.id, 'accepted');
+                    });
+                    
+                    declineButton.addEventListener('click', function(event) {
+                        event.stopPropagation();
+                        handleButtonClick(form.id, 'decline');
+                    });
+
+                    if (attendingInput.value === 'accepted') {
+                        acceptedButton.classList.add('selected');
+                        declineButton.classList.remove('selected');
+                    } 
+                    else if (attendingInput.value === 'decline') {
+                        acceptedButton.classList.remove('selected');
+                        declineButton.classList.add('selected');
+                    }
+
+                    // Append the form to the body of the document
+                    document.getElementById('nameModal').style.display = 'none';
+                    form.style.display = 'block';
+                    document.getElementById('form-container').style.display = 'block';
+                    document.getElementById('form-container').prepend(form);
+                });
             });
         });
 
-        function handleButtonClick(option) {
-            // Update the hidden input value based on the clicked button
-            document.getElementById('attendingInput').value = option;
+        function handleButtonClick(child_form, option) {
+            console.log('handleButtonClick called with child_form:', child_form, 'and option:', option);
 
-            // Style the buttons to indicate the selected option (optional)
-            document.getElementById('acceptedButton').classList.toggle('selected', option === 'accepted');
-            document.getElementById('declineButton').classList.toggle('selected', option === 'decline');
+            // Get the form and check if it exists
+            let form = document.getElementById(child_form);
+            if (!form) {
+                console.log('Form not found:', child_form);
+                return;
+            }
+
+            // Get the attendingInput and check if it exists
+            let attendingInput = form.querySelector('#attendingInput');
+            if (!attendingInput) {
+                console.log('attendingInput not found in form:', child_form);
+                return;
+            }
+
+            // Update the hidden input value in the form
+            attendingInput.value = option;
+
+            // Get the acceptedButton and check if it exists
+            let acceptedButton = form.querySelector('#acceptedButton');
+            if (!acceptedButton) {
+                console.log('acceptedButton not found in form:', child_form);
+                return;
+            }
+
+            // Get the declineButton and check if it exists
+            let declineButton = form.querySelector('#declineButton');
+            if (!declineButton) {
+                console.log('declineButton not found in form:', child_form);
+                return;
+            }
+
+            // Style the buttons to indicate the selected option
+            acceptedButton.classList.toggle('selected', option === 'accepted');
+            declineButton.classList.toggle('selected', option === 'decline');
+
         }
+
+        // Process data from form before sending it server-side
+        document.addEventListener("DOMContentLoaded", function() {
+            console.log(document.getElementById('form-container'));
+            document.getElementById('form-container').addEventListener('submit', function (event) {
+
+                console.log("form-contianer Form submitted");
+                
+                // Needed this line to stop bug causing form to submit twice when I moved it to Django
+                event.stopImmediatePropagation();
+                // Prevent the default form submission
+                event.preventDefault();
+
+                // Get all form data 
+                var formDataArray = [];
+
+                var forms = event.target.querySelectorAll('form');
+                forms.forEach(function(form) {
+                    // Create a FormData object for each form
+                    var formData = new FormData(form);
+                    // Convert the form data to an object
+                    var formDataObject = {};
+                    // TODO: do this individually for each field and have type specific checks for each
+                    formData.forEach(function (value, key) {
+                        formDataObject[key] = value;
+                    });
+                    // Add the object to the array
+                    formDataArray.push(formDataObject);
+                });
+
+                console.log("formDataArray: ");
+                console.log(formDataArray);
+
+                // Store the form data in local storage
+                //This is robably not needed - TODO: remove
+                formDataArray.forEach(function(form){
+                    console.log("form: ");
+                    console.log(form);
+                    let name = form['full-name'];
+                    localStorage.setItem(`${name}_Data`, JSON.stringify(form));
+                });
+
+                // Use a relative path to send the data to the Django view
+                fetch('../../submit-rsvp/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formDataArray),
+                })
+                .then(response => {
+                    if (response.headers.get("content-type").includes("application/json")) {
+                        return response.json();
+                    } else {
+                        throw new Error('Received content type ' + response.headers.get("content-type"));
+                    }
+                })
+                .then(data => {
+                    // Handle the response from the server if needed
+                    console.log("Response from server:");
+                    console.log(data);
+                })
+                .catch(error => {
+                    // Handle errors
+                    console.error('Error:', error);
+                });
+
+                console.log("formDataArray after fetch:");
+                console.log(JSON.stringify(formDataArray));
+
+                // Reset the form or redirect the user as needed
+                event.target.reset();
+            });
+        });
+
+        document.addEventListener('submit', function (event) {
+            console.log('Submit event fired');
+        });
+
     </script>
 
 </body>
