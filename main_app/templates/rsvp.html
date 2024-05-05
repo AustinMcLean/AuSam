@@ -50,7 +50,7 @@
                     <label for="dietary-restrictions">Dietary restrictions<input type="text" id="dietary-restrictions" name="dietary-restrictions" /></label>
                 </div>
 
-                <div class="radio-group">
+                <div class="radio-group"  id="babysitter-question">
                     <label class="question-label" for="babysitter">Do you need a babysitter for this child for the wedding day?</label>
                     <div class="radio-buttons">
                         <label>
@@ -263,6 +263,13 @@
                         dietaryRestrictionsInput.value = user.dietary_restrictions;
                     }
                     console.log("dietary restrictions: " + dietaryRestrictionsInput.value);
+
+                    if(user.is_child === false) {
+                        console.log("User is not an adult");
+                        form.querySelector('#babysitter-question').style.display = 'none';
+                    }else{
+                        console.log("User is a child");
+                        form.querySelector('#babysitter-question').style.display = 'block';}
 
                     let babysitterInputs = form.querySelectorAll('input[name="babysitter"]');
                     babysitterInputs.forEach(input => {
