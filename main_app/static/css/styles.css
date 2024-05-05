@@ -242,12 +242,12 @@ input {
 }
 
 .attending-button.selected {
-    background-color: #e45f00; /* TODO: change this colour, it's too vibrant */ 
+    background-color: #e45f00; /* Burnt Orange color */
     color: white;
 }
 
 .attending-button:hover {
-    background-color: #FF4500;  /* Burnt Orange color */
+    background-color: #FF4500;  /* TODO: change this colour, it's too vibrant */ 
 }
 
 .modal {
@@ -308,6 +308,37 @@ input {
     margin-top: 5px; /* Add some margin at the top */
     border-radius: 4px; /* Round the corners */
     display: none; /* Hide it by default */
+}
+
+.radio-group {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.radio-group input[type="radio"] {
+    display: none;
+}
+
+.radio-group .radio {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    border: 2px solid #e45f00;
+    border-radius: 50%;
+    transition: background 0.3s ease;
+}
+
+.radio-group input[type="radio"]:checked + .radio {
+    background: #e45f00;
+}
+
+.radio-group .label {
+    display: inline-block;
+    font-size: 1em;
+    line-height: 24px;
+    margin-right: 10px;
+    vertical-align: top;
 }
 
 /* End of RSVP page */

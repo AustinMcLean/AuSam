@@ -29,7 +29,20 @@
                     <button type="button" id="declineButton" class="attending-button">Decline</button>
                     
                     <input type="hidden" id="attendingInput" name="attending" value="" required>
-                </div>    
+                </div>
+                
+                <div class="radio-group">
+                    <label>
+                        <input type="radio" name="food-preference" value="lamb" required />
+                        <span class="radio"></span>
+                        <span class="label">Lamb stuffed with sausage</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="food-preference" value="vegetarian" required />
+                        <span class="radio"></span>
+                        <span class="label">Eggplant parmesan (vegetarian)</span>
+                    </label>
+                </div>
             </fieldset>
         </form>
     </div>
@@ -126,6 +139,13 @@
                         acceptedButton.classList.remove('selected');
                         declineButton.classList.add('selected');
                     }
+
+                    let foodPreferenceInputs = form.querySelectorAll('input[name="food-preference"]');
+                    foodPreferenceInputs.forEach(input => {
+                        if (input.value === user.foodPreference) {
+                            input.checked = true;
+                        }
+                    });
 
                     // Append the form to the body of the document
                     document.getElementById('nameModal').style.display = 'none';
