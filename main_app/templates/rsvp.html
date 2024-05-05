@@ -100,32 +100,32 @@
                 </div>
 
                 <div class="radio-group">
-                    <label for="brunch">Will you be joining us for the pizza party at the hotel on October 25, 2024?</label>
+                    <label for="pizza">Will you be joining us for the pizza party at the hotel on October 25, 2024?</label>
                     <div class="radio-buttons">
                         <label>
-                            <input type="radio" name="brunch" value="yes" required />
+                            <input type="radio" name="pizza" value="yes" required />
                             <span class="radio"></span>
                             <span class="label">Yes</span>
                         </label>
                         <label>
-                            <input type="radio" name="brunch" value="no" required />
+                            <input type="radio" name="pizza" value="no" required />
                             <span class="radio"></span>
                             <span class="label">No</span>
                         </label>
                     </div>
                     <div class="radio-buttons">
                         <label>
-                            <input type="radio" name="brunch-meal" value="vegetarian" required />
+                            <input type="radio" name="pizza-meal" value="vegetarian" required />
                             <span class="radio"></span>
                             <span class="label">Vegetarian</span>
                         </label>
                         <label>
-                            <input type="radio" name="brunch-meal" value="kids-meal" required />
+                            <input type="radio" name="pizza-meal" value="kids-meal" required />
                             <span class="radio"></span>
                             <span class="label">Kid's meal</span>
                         </label>
                         <label>
-                            <input type="radio" name="brunch-meal" value="NA" required />
+                            <input type="radio" name="pizza-meal" value="NA" required />
                             <span class="radio"></span>
                             <span class="label">N/A</span>
                         </label>
@@ -252,7 +252,54 @@
 
                     let foodPreferenceInputs = form.querySelectorAll('input[name="food-preference"]');
                     foodPreferenceInputs.forEach(input => {
-                        if (input.value === user.foodPreference) {
+                        if (input.value === user.meal) {
+                            input.checked = true;
+                        }
+                    });
+
+                    let dietaryRestrictionsInput = form.querySelector('input[name="dietary-restrictions"]');
+                    if (user.dietaryRestrictions) {
+                        dietaryRestrictionsInput.value = user.dietary_restrictions;
+                    }
+
+                    let babysitterInputs = form.querySelectorAll('input[name="babysitter"]');
+                    babysitterInputs.forEach(input => {
+                        if (input.value === user.babysitter) {
+                            input.checked = true;
+                        }
+                    });
+
+                    let welcomeDinnerInputs = form.querySelectorAll('input[name="welcome-dinner"]');
+                    welcomeDinnerInputs.forEach(input => {
+                        if (input.value === user.welcome_dinner) {
+                            input.checked = true;
+                        }
+                    });
+
+                    let welcomeMealInputs = form.querySelectorAll('input[name="welcome-meal"]');
+                    welcomeMealInputs.forEach(input => {
+                        if (input.value === user.welcome_meal) {
+                            input.checked = true;
+                        }
+                    });
+
+                    let pizzaInputs = form.querySelectorAll('input[name="pizza"]');
+                    pizzaInputs.forEach(input => {
+                        if (input.value === user.pizza) {
+                            input.checked = true;
+                        }
+                    });
+
+                    let pizzaMealInputs = form.querySelectorAll('input[name="pizza-meal"]');
+                    pizzaMealInputs.forEach(input => {
+                        if (input.value === user.pizza_meal) {
+                            input.checked = true;
+                        }
+                    });
+
+                    let stayInputs = form.querySelectorAll('input[name="stay"]');
+                    stayInputs.forEach(input => {
+                        if (input.value === user.stay) {
                             input.checked = true;
                         }
                     });
