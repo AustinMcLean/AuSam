@@ -82,7 +82,7 @@
                     </div>
                     <div class="radio-buttons">
                         <label>
-                            <input type="radio" name="welcom-meal" value="vegetarian" required />
+                            <input type="radio" name="welcome-meal" value="vegetarian" required />
                             <span class="radio"></span>
                             <span class="label">Vegetarian</span>
                         </label>
@@ -259,7 +259,7 @@
                     console.log("food preference: " + user.meal);
 
                     let dietaryRestrictionsInput = form.querySelector('input[name="dietary-restrictions"]');
-                    if (user.dietaryRestrictions) {
+                    if (user.dietary_restrictions) {
                         dietaryRestrictionsInput.value = user.dietary_restrictions;
                     }
                     console.log("dietary restrictions: " + dietaryRestrictionsInput.value);
