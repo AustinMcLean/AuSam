@@ -185,23 +185,46 @@ summary {
 /*End of Photos page*/
 
 /*People Page*/
-.hisPeople {
+.people img {
+    width: 100%;
+    max-width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.groomsmen, .bridesmaid {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: 30px;
-    max-width: 1200px;
+    gap: 45px;
+    max-width: 1800px;
     margin: 0 auto;
     padding: 20px 10px;
 }
 
-.hisPeople img {
-    width: 100%;
-    max-width: 500px;
-    height: 333px;
-    object-fit: cover;
+
+.hisParents, .herParents{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 45px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px 10px;
+}
+
+.people figcaption{
+    text-align: center;
+}
+
+.people h2{
+    text-align: center;
+    margin-top: 50px;
 }
 /*End of People Page*/
 
@@ -408,4 +431,10 @@ body, html {
     padding: 0;
     margin: 0;
     width: 100%;
+}
+
+.my-container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 10px;
 }
