@@ -144,16 +144,17 @@ summary {
 }
 
 #directions-page .travel-options {
-    flex: 1 0 60%; /* Take up 60% of the width on larger screens */
-    max-width: 60%; /* Take up 60% of the width on larger screens */
+    flex: 1 0 50%; /* Take up 60% of the width on larger screens */
+    max-width: 50%; /* Take up 60% of the width on larger screens */
 }
 
 #directions-page #google-maps {
     flex: 1 0 40%; /* Take up 40% of the width on larger screens */
+    margin-left: auto; /* Right align the component */
     max-width: 40%; /* Take up 40% of the width on larger screens */
 }
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
     #directions-page .travel-options,
     #directions-page #google-maps {
         flex: 1 0 100%; /* Take up 100% of the width on smaller screens */
@@ -312,7 +313,6 @@ input {
 
 .radio-group {
     display: flex;
-    margin-bottom: 20px;
 }
 
 .radio-group input[type="radio"] {
@@ -339,6 +339,21 @@ input {
     line-height: 24px;
     margin-right: 10px;
     vertical-align: top;
+}
+
+input[type="text"] {
+    height: 25px;
+    padding: 5px 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 12px;
+}
+
+label, input[type="text"] {
+    vertical-align: middle;
+    margin-bottom: 7px;
 }
 
 /* End of RSVP page */
