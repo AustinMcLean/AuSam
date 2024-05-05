@@ -207,6 +207,15 @@ label {
     margin: 1rem 1rem;
   }
 
+#full-name-display {
+    font-size: 1.2em; /* Make the font size 1.5 times larger */
+    font-weight: bold; /* Make the text bold */
+    color: black; /* Use a blue color for the text */
+    background-color: #f8f9fa; /* Use a light grey background color */
+    padding: 5px; /* Add some padding */
+    margin: 10px 0; /* Add some margin at the top and bottom */
+}
+
 input {
     margin: 0rem 1rem;
 }

@@ -18,7 +18,8 @@
     <div id="attendance-form-wrapper" style="display: none;">
         <form id="attendance-form">
             <fieldset>
-                <label for="full-name">Full Name: <input id="full-name" name="full-name" type="text" required /></label>
+                <label for="full-name">Guest: <span id="full-name-display"></span></label>
+                <input id="full-name" name="full-name" type="hidden" required />
     
                 <div class="attending-button-container">
                     <label for="acceptedButton">Attending:</label>
@@ -52,6 +53,8 @@
 
             var name = document.getElementById('name-input').value;
 
+            // TODO: Add validation for the name input and ignore case
+
             fetch('/get_invite?name=' + name)
             .then(response => response.json())
             .then(data => {
@@ -84,9 +87,12 @@
                     console.log("form id: " + form.id);
 
                     // Populate the form's fields
-                    let fullNameInput = form.querySelector('input[name="full-name"]');
+                    let fullNameInput = form.querySelector("#full-name");
                     fullNameInput.value = user.name;
                     console.log("full name: " + fullNameInput.value);
+                    let fullNameDisplay = form.querySelector('#full-name-display');
+                    fullNameDisplay.textContent = " " + fullNameInput.value;
+                    console.log("full name display: " + fullNameDisplay.textContent);
 
                     let attendingInput = form.querySelector('input[name="attending"]');
                     attendingInput.value = user.attending;
