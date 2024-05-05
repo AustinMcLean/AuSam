@@ -9,6 +9,7 @@
           <h2>Enter full name to retrieve invite</h2>
           <form id="name-form">
             <input type="text" id="name-input" required>
+            <span id="name-error-message" style="display: none; color: red;"></span>
             <button type="submit">Submit</button>
           </form>
         </div>
@@ -54,6 +55,21 @@
             fetch('/get_invite?name=' + name)
             .then(response => response.json())
             .then(data => {
+                console.log("Data from server:");
+                console.log(data);
+
+                if (data.error) {
+                    // Find the name input field and the error message element
+                    let nameInput = document.getElementById('name-input');
+                    let errorMessage = document.getElementById('name-error-message');
+
+                    // Set the error message and make it visible
+                    errorMessage.textContent = data.error;
+                    errorMessage.style.display = 'block';
+
+                    return;
+                }
+
                 // process list of users on the invite
                 var allUsersOnInvite = data.all_users_on_invite;
 
@@ -111,6 +127,9 @@
                     document.getElementById('form-container').style.display = 'block';
                     document.getElementById('form-container').prepend(form);
                 });
+            })
+            .catch(error => {
+                console.error('Error:', error);
             });
         });
 
