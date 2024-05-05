@@ -10,7 +10,7 @@
           <form id="name-form">
             <input type="text" id="name-input" required>
             <span id="name-error-message"></span>
-            <button type="submit">Submit</button>
+            <button type="submit" id="modalSubmit">Submit</button>
           </form>
         </div>
     </div>
@@ -32,17 +32,127 @@
                 </div>
                 
                 <div class="radio-group">
-                    <label>
-                        <input type="radio" name="food-preference" value="lamb" required />
-                        <span class="radio"></span>
-                        <span class="label">Lamb stuffed with sausage</span>
-                    </label>
-                    <label>
-                        <input type="radio" name="food-preference" value="vegetarian" required />
-                        <span class="radio"></span>
-                        <span class="label">Eggplant parmesan (vegetarian)</span>
-                    </label>
+                    <div class="radio-buttons">
+                        <label>
+                            <input type="radio" name="food-preference" value="lamb" required />
+                            <span class="radio"></span>
+                            <span class="label">Lamb stuffed with sausage</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="food-preference" value="vegetarian" required />
+                            <span class="radio"></span>
+                            <span class="label">Eggplant parmesan (vegetarian)</span>
+                        </label>
+                    </div>
                 </div>
+
+                <div class="text-group">
+                    <label for="dietary-restrictions">Dietary restrictions<input type="text" id="dietary-restrictions" name="dietary-restrictions" /></label>
+                </div>
+
+                <div class="radio-group">
+                    <label class="question-label" for="babysitter">Do you need a babysitter for this child for the wedding day?</label>
+                    <div class="radio-buttons">
+                        <label>
+                            <input type="radio" name="babysitter" value="yes" required />
+                            <span class="radio"></span>
+                            <span class="label">Yes</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="babysitter" value="no" required />
+                            <span class="radio"></span>
+                            <span class="label">No</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="radio-group">
+                    <label for="welcome-dinner">Will you joining us for the welcome dinner at Da Giovannino on October 23, 2024?</label>
+                    <div class="radio-buttons">
+                        <label>
+                            <input type="radio" name="welcome-dinner" value="yes" required />
+                            <span class="radio"></span>
+                            <span class="label">Yes</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="welcome-dinner" value="no" required />
+                            <span class="radio"></span>
+                            <span class="label">No</span>
+                        </label>
+                    </div>
+                    <div class="radio-buttons">
+                        <label>
+                            <input type="radio" name="welcom-meal" value="vegetarian" required />
+                            <span class="radio"></span>
+                            <span class="label">Vegetarian</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="welcome-meal" value="kids-meal" required />
+                            <span class="radio"></span>
+                            <span class="label">Kid's meal</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="welcome-meal" value="NA" required />
+                            <span class="radio"></span>
+                            <span class="label">N/A</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="radio-group">
+                    <label for="brunch">Will you be joining us for the pizza party at the hotel on October 25, 2024?</label>
+                    <div class="radio-buttons">
+                        <label>
+                            <input type="radio" name="brunch" value="yes" required />
+                            <span class="radio"></span>
+                            <span class="label">Yes</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="brunch" value="no" required />
+                            <span class="radio"></span>
+                            <span class="label">No</span>
+                        </label>
+                    </div>
+                    <div class="radio-buttons">
+                        <label>
+                            <input type="radio" name="brunch-meal" value="vegetarian" required />
+                            <span class="radio"></span>
+                            <span class="label">Vegetarian</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="brunch-meal" value="kids-meal" required />
+                            <span class="radio"></span>
+                            <span class="label">Kid's meal</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="brunch-meal" value="NA" required />
+                            <span class="radio"></span>
+                            <span class="label">N/A</span>
+                        </label>
+                    </div>
+                </div>
+
+                
+                <div class="radio-group">
+                    <label class="question-label" for="stay">How many days will you remain on site?</label>
+                    <div class="radio-buttons">
+                        <label>
+                            <input type="radio" name="stay" value="1" required />
+                            <span class="radio"></span>
+                            <span class="label">1</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="stay" value="2" required />
+                            <span class="radio"></span>
+                            <span class="label">2</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="stay" value="3" required />
+                            <span class="radio"></span>
+                            <span class="label">3</span>
+                    </div>
+                </div>
+
             </fieldset>
         </form>
     </div>
