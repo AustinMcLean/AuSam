@@ -5,13 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{%block title%}AuSam{% endblock %}</title>
     {% load static %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
   </head>
   <body>
     <header id="header">
       <h1>Austin & Samantha</h1>
       <h2>October 24, 2024 - Perugia, Italy</h2>
-      <nav class="navBar">
+
+      <!-- Original navbar for larger screens -->
+      <nav class="navbar-original">
           <ul>
               <li><a href="{% url 'home' %}">Home</a></li>
               <li><a href="{% url 'directions' %}">Getting There</a></li>
@@ -23,11 +27,31 @@
               <li><a href="{% url 'rsvp' %}">RSVP</a></li>
           </ul>
       </nav>
-  </header>
-    <div class="container">{% block content %} {% endblock %}</div>
 
-    {% load static %}
-    <script src="{% static 'js/script.js' %}"></script>
+      <!-- Bootstrap burger menu for smaller screens -->
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'directions' %}">Getting There</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'itinerary' %}">3 Day Itinerary</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'photos' %}">A&S Photos</a></li>
+            <li class="nav-item"><a class="nav-link" href="capture.html">Capture our Love</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'info' %}">Info</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'rsvp' %}">RSVP</a></li>
+          </ul>
+        </div>
+      </nav>
+  </header>
+    <div class="container my-container">{% block content %} {% endblock %}</div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
   </body>
 </html>
