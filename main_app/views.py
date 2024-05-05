@@ -97,6 +97,14 @@ def submit_rsvp(request):
 
             # TODO: Do some type validation here - probably better than on client side
             current_rsvp.attending = form.get('attending')
+            current_rsvp.meal = form.get('meal')
+            current_rsvp.dietary_restrictions = form.get('dietary-restrictions')
+            current_rsvp.babysitter = form.get('babysitter')
+            current_rsvp.welcome_dinner = form.get('welcome-dinner')
+            current_rsvp.welcome_meal = form.get('welcome-meal')
+            current_rsvp.pizza = form.get('pizza')
+            current_rsvp.pizza_meal = form.get('pizza-meal')
+            current_rsvp.stay = form.get('stay')
             current_rsvp.save()
         
         return JsonResponse({'message': f'RSVP submitted successfully for'})

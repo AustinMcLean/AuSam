@@ -256,11 +256,13 @@
                             input.checked = true;
                         }
                     });
+                    console.log("food preference: " + user.meal);
 
                     let dietaryRestrictionsInput = form.querySelector('input[name="dietary-restrictions"]');
                     if (user.dietaryRestrictions) {
                         dietaryRestrictionsInput.value = user.dietary_restrictions;
                     }
+                    console.log("dietary restrictions: " + dietaryRestrictionsInput.value);
 
                     let babysitterInputs = form.querySelectorAll('input[name="babysitter"]');
                     babysitterInputs.forEach(input => {
@@ -268,6 +270,7 @@
                             input.checked = true;
                         }
                     });
+                    console.log("babysitter: " + user.babysitter);
 
                     let welcomeDinnerInputs = form.querySelectorAll('input[name="welcome-dinner"]');
                     welcomeDinnerInputs.forEach(input => {
@@ -275,6 +278,7 @@
                             input.checked = true;
                         }
                     });
+                    console.log("welcome dinner: " + user.welcome_dinner);
 
                     let welcomeMealInputs = form.querySelectorAll('input[name="welcome-meal"]');
                     welcomeMealInputs.forEach(input => {
@@ -282,6 +286,7 @@
                             input.checked = true;
                         }
                     });
+                    console.log("welcome meal: " + user.welcome_meal);
 
                     let pizzaInputs = form.querySelectorAll('input[name="pizza"]');
                     pizzaInputs.forEach(input => {
@@ -289,6 +294,7 @@
                             input.checked = true;
                         }
                     });
+                    console.log("pizza: " + user.pizza);
 
                     let pizzaMealInputs = form.querySelectorAll('input[name="pizza-meal"]');
                     pizzaMealInputs.forEach(input => {
@@ -296,6 +302,7 @@
                             input.checked = true;
                         }
                     });
+                    console.log("pizza meal: " + user.pizza_meal);
 
                     let stayInputs = form.querySelectorAll('input[name="stay"]');
                     stayInputs.forEach(input => {
@@ -303,6 +310,7 @@
                             input.checked = true;
                         }
                     });
+                    console.log("stay: " + user.stay);
 
                     // Append the form to the body of the document
                     document.getElementById('nameModal').style.display = 'none';
