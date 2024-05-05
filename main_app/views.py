@@ -48,14 +48,28 @@ def get_invite(request):
         print(name)
 
         try:
-            invite = RsvpEntry.objects.get(name=name)
-            print(invite)
-            print(invite.name)
-            print(invite.attending)
+            # get the current invite from the database
+            current_invite = RsvpEntry.objects.get(name=name)
+            print(current_invite)
+            print(current_invite.name)
+            print(current_invite.attending)
+            print(current_invite.invite)
+
+            if not current_invite:
+                return JsonResponse({'error': 'No invite found for given name.'}, status=404)
+            
+            invite_id = current_invite.invite
+
+            # get all users on the invite
+            all_users_on_invite = RsvpEntry.objects.filter(invite=invite_id)
+            print("All users on invite: ")
+            print(all_users_on_invite)
+            print(list(all_users_on_invite.values()))
+
             return JsonResponse({
-                'fullName': invite.name,
-                'attending': invite.attending
+                'all_users_on_invite': list(all_users_on_invite.values())
             })
+
         except RsvpEntry.DoesNotExist:
             return JsonResponse({'error': 'No invite found for given name.'}, status=404)
 
@@ -66,42 +80,26 @@ def submit_rsvp(request):
     if request.method == 'POST':
 
         request_body_json = json.loads(request.body)
+        print("On the server side: ")
         print(request_body_json)
-        print(request_body_json.get('full-name'))
+        
+         # Process the data received from the front end
+        for form in request_body_json:
+            print(form)
+            print(form.get('full-name'))
+            print(form.get('attending'))
+            print(form.get('invite'))
 
+            current_rsvp = RsvpEntry.objects.get(name=form.get('full-name'))
 
-        # Process the data received from the front end
-        name = request_body_json.get('full-name')
-        response = request_body_json.get('attending')
+            if not current_rsvp:
+                return JsonResponse({'error': 'No RSVP found for given name.'}, status=404)
 
-        # TODO: process and save data to the database
-        rsvp_entries = RsvpEntry.objects.all()
-        # rsvp_entries = []
-        print(rsvp_entries)
-
-        current_rsvp = None
-        for entry in rsvp_entries:
-            print(entry)
-            print(entry.name)
-            if name == entry.name:
-                entry.attending = response
-                current_rsvp = entry
-
-        if not current_rsvp:
-            # raise Exception('No invite found for given name.')
-            print('No invite found for given name.')
-
-        # current_rsvp = RsvpEntry()
-        # current_rsvp.name = name
-        # current_rsvp.attending = response
-        print(current_rsvp)
-        # rsvp_entries.appends(current_rsvp)
-        # print(rsvp_entries.name)
-
-        # Insert or Update DB
-        current_rsvp.save()
-
-        return JsonResponse({'message': f'RSVP submitted successfully for {name}'})
+            # TODO: Do some type validation here - probably better than on client side
+            current_rsvp.attending = form.get('attending')
+            current_rsvp.save()
+        
+        return JsonResponse({'message': f'RSVP submitted successfully for'})
     
     # Handle other HTTP methods or invalid requests
     return JsonResponse({'error': 'Invalid request method'})
