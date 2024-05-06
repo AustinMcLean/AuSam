@@ -323,48 +323,15 @@
 
                     // Show or hide tertiary questions based on primary question
                     let primaryQuestions = form.querySelectorAll('.primary-question');
-                    console.log("primaryQuestions: ");
-                    console.log(primaryQuestions);
-
                     primaryQuestions.forEach(function(question) {
-                        // Get the linked question ID
-                        let linkedQuestionId = question.dataset.linkedQuestion;
-                        console.log("linkedQuestionId: " + linkedQuestionId);
-
+                        // Add an event listener to each input element in the question
                         question.addEventListener('change', function(event) {
-                            // Get the linked question element
-                            let linkedQuestion = form.querySelector(`.tertiary-question[data-question-id="${linkedQuestionId}"]`);
-                            console.log("linkedQuestion: ");
-                            console.log(linkedQuestion);
-                        
-                            // Get the input value of the primary question
-                            let inputValue = event.target.value;
-                            console.log("inputValue: " + inputValue);
-
-                            // Get all input elements within the linked question
-                            let inputs = linkedQuestion.querySelectorAll('input');
-                        
-                            // Modify the linked question based on the input value
-                            if (inputValue === 'yes') {
-                                linkedQuestion.style.display = 'flex';
-                                linkedQuestion.classList.add('tertiary-question-flex');
-                                inputs.forEach(function(input) {
-                                    input.required = true;
-                                    input.classList.add('tertiary-input');
-                                });
-                            } else {
-                                linkedQuestion.style.display = 'none';
-                                linkedQuestion.classList.remove('tertiary-question-flex');
-                                inputs.forEach(function(input) {
-                                    input.required = false;
-                                    input.classList.remove('tertiary-input');
-                                });
-                            }
-
-                            console.log("linkedQuestion input required: " + linkedQuestion.querySelector('input').required);
+                            handleInputChange(form, question, event.target.value);
                         });
-                    });
 
+                        // Initialize the linked question based on the primary question value
+                        handleInputChange(form, question, question.querySelector('input:checked').value);
+                    });
 
                     // Append the form to the body of the document
                     document.getElementById('nameModal').style.display = 'none';
@@ -378,28 +345,38 @@
             });
         });
 
-        function handleInputChange(childFormId, inputValue) {
-            // Select the form with the given ID
-            let form = document.getElementById(childFormId);
-            console.log("Child form: ");
-            console.log(form);
+        function handleInputChange(childForm, question, inputValue) {
+            // Get the linked question ID
+            let linkedQuestionId = question.dataset.linkedQuestion;
+            console.log("linkedQuestionId: " + linkedQuestionId);
 
-            // Select all tertiary-question elements within the form
-            let tertiaryQuestions = form.querySelectorAll('.tertiary-question');
-            console.log("Child form's tertiary questions: ");
-            console.log(tertiaryQuestions);
+           // Get the linked question element
+           let linkedQuestion = childForm.querySelector(`.tertiary-question[data-question-id="${linkedQuestionId}"]`);
+            console.log("linkedQuestion: ");
+            console.log(linkedQuestion);
+            console.log("inputValue: " + inputValue);
 
-            // Iterate over each tertiary-question
-            tertiaryQuestions.forEach(function(question) {
-                // Modify the question based on the input value
-                if (inputValue === 'yes') {
-                    question.querySelector('input').required = true;
-                    form.style.display = 'block';
-                } else {
-                    question.querySelector('input').required = false;
-                    form.style.display = 'none';
-                }
-            });
+            // Get all input elements within the linked question
+            let inputs = linkedQuestion.querySelectorAll('input');
+        
+            // Modify the linked question based on the input value
+            if (inputValue === 'yes') {
+                linkedQuestion.style.display = 'flex';
+                linkedQuestion.classList.add('tertiary-question-flex');
+                inputs.forEach(function(input) {
+                    input.required = true;
+                    input.classList.add('tertiary-input');
+                });
+            } else {
+                linkedQuestion.style.display = 'none';
+                linkedQuestion.classList.remove('tertiary-question-flex');
+                inputs.forEach(function(input) {
+                    input.required = false;
+                    input.classList.remove('tertiary-input');
+                });
+            }
+
+            console.log("linkedQuestion input required: " + linkedQuestion.querySelector('input').required);
         }
 
         function handleButtonClick(child_form, option) {
