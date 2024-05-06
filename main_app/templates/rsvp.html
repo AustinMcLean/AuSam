@@ -31,7 +31,7 @@
                     <input type="hidden" id="attendingInput" name="attending" value="" required>
                 </div>
                 
-                <div class="radio-group">
+                <div class="radio-group secondary-question">
                     <div class="radio-buttons">
                         <label>
                             <input type="radio" name="food-preference" value="lamb" required />
@@ -46,11 +46,11 @@
                     </div>
                 </div>
 
-                <div class="text-group">
+                <div class="text-group secondary-question">
                     <label for="dietary-restrictions">Dietary restrictions<input type="text" id="dietary-restrictions" name="dietary-restrictions" /></label>
                 </div>
 
-                <div class="radio-group"  id="babysitter-question">
+                <div class="radio-group secondary-question"  id="babysitter-question">
                     <label class="question-label" for="babysitter">Do you need a babysitter for this child for the wedding day?</label>
                     <div class="radio-buttons">
                         <label>
@@ -66,7 +66,7 @@
                     </div>
                 </div>
 
-                <div class="radio-group">
+                <div class="radio-group secondary-question">
                     <label for="welcome-dinner">Will you joining us for the welcome dinner at Da Giovannino on October 23, 2024?</label>
                     <div class="radio-buttons">
                         <label>
@@ -99,7 +99,7 @@
                     </div>
                 </div>
 
-                <div class="radio-group">
+                <div class="radio-group secondary-question">
                     <label for="pizza">Will you be joining us for the pizza party at the hotel on October 25, 2024?</label>
                     <div class="radio-buttons">
                         <label>
@@ -133,7 +133,7 @@
                 </div>
 
                 
-                <div class="radio-group">
+                <div class="radio-group secondary-question">
                     <label class="question-label" for="stay">How many days will you remain on site?</label>
                     <div class="radio-buttons">
                         <label>
@@ -369,6 +369,18 @@
             acceptedButton.classList.toggle('selected', option === 'accepted');
             declineButton.classList.toggle('selected', option === 'decline');
 
+            // Show or hide secondary questions based on attending option
+            let secondaryQuestions = form.querySelectorAll('.secondary-question');
+            console.log("secondaryQuestions: ");
+            console.log(secondaryQuestions);
+
+            secondaryQuestions.forEach(function(question) {
+                if (option === 'accepted') {
+                    question.style.display = 'block';
+                } else {
+                    question.style.display = 'none';
+                }
+            });
         }
 
         // Process data from form before sending it server-side
