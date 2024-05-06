@@ -331,7 +331,10 @@
                         });
 
                         // Initialize the linked question based on the primary question value
-                        handleInputChange(form, question, question.querySelector('input:checked').value);
+                        let checkedInput = question.querySelector('input:checked');
+                        if (checkedInput) {
+                            handleInputChange(form, question, checkedInput.value);
+                        }
                     });
 
                     // Append the form to the body of the document
