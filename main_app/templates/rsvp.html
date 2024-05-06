@@ -68,7 +68,7 @@
 
                 <div class="radio-group secondary-question">
                     <label for="welcome-dinner">Will you joining us for the welcome dinner at Da Giovannino on October 23, 2024?</label>
-                    <div class="radio-buttons">
+                    <div class="radio-buttons primary-question" data-linked-question="welcome-meal">
                         <label>
                             <input type="radio" name="welcome-dinner" value="yes" required />
                             <span class="radio"></span>
@@ -80,7 +80,8 @@
                             <span class="label">No</span>
                         </label>
                     </div>
-                    <div class="radio-buttons">
+                    <div class="radio-buttons tertiary-question" data-question-id="welcome-meal" style="display: none;">
+                        <label>Menu options:</label>
                         <label>
                             <input type="radio" name="welcome-meal" value="vegetarian" required />
                             <span class="radio"></span>
@@ -101,7 +102,7 @@
 
                 <div class="radio-group secondary-question">
                     <label for="pizza">Will you be joining us for the pizza party at the hotel on October 25, 2024?</label>
-                    <div class="radio-buttons">
+                    <div class="radio-buttons primary-question" data-linked-question="pizza-meal">
                         <label>
                             <input type="radio" name="pizza" value="yes" required />
                             <span class="radio"></span>
@@ -113,7 +114,8 @@
                             <span class="label">No</span>
                         </label>
                     </div>
-                    <div class="radio-buttons">
+                    <div class="radio-buttons tertiary-question" data-question-id="pizza-meal" style="display: none;">
+                        <label>Menu options:</label>
                         <label>
                             <input type="radio" name="pizza-meal" value="vegetarian" required />
                             <span class="radio"></span>
@@ -319,6 +321,51 @@
                     });
                     console.log("stay: " + user.stay);
 
+                    // Show or hide tertiary questions based on primary question
+                    let primaryQuestions = form.querySelectorAll('.primary-question');
+                    console.log("primaryQuestions: ");
+                    console.log(primaryQuestions);
+
+                    primaryQuestions.forEach(function(question) {
+                        // Get the linked question ID
+                        let linkedQuestionId = question.dataset.linkedQuestion;
+                        console.log("linkedQuestionId: " + linkedQuestionId);
+
+                        question.addEventListener('change', function(event) {
+                            // Get the linked question element
+                            let linkedQuestion = form.querySelector(`.tertiary-question[data-question-id="${linkedQuestionId}"]`);
+                            console.log("linkedQuestion: ");
+                            console.log(linkedQuestion);
+                        
+                            // Get the input value of the primary question
+                            let inputValue = event.target.value;
+                            console.log("inputValue: " + inputValue);
+
+                            // Get all input elements within the linked question
+                            let inputs = linkedQuestion.querySelectorAll('input');
+                        
+                            // Modify the linked question based on the input value
+                            if (inputValue === 'yes') {
+                                linkedQuestion.style.display = 'flex';
+                                linkedQuestion.classList.add('tertiary-question-flex');
+                                inputs.forEach(function(input) {
+                                    input.required = true;
+                                    input.classList.add('tertiary-input');
+                                });
+                            } else {
+                                linkedQuestion.style.display = 'none';
+                                linkedQuestion.classList.remove('tertiary-question-flex');
+                                inputs.forEach(function(input) {
+                                    input.required = false;
+                                    input.classList.remove('tertiary-input');
+                                });
+                            }
+
+                            console.log("linkedQuestion input required: " + linkedQuestion.querySelector('input').required);
+                        });
+                    });
+
+
                     // Append the form to the body of the document
                     document.getElementById('nameModal').style.display = 'none';
                     form.style.display = 'block';
@@ -330,6 +377,30 @@
                 console.error('Error:', error);
             });
         });
+
+        function handleInputChange(childFormId, inputValue) {
+            // Select the form with the given ID
+            let form = document.getElementById(childFormId);
+            console.log("Child form: ");
+            console.log(form);
+
+            // Select all tertiary-question elements within the form
+            let tertiaryQuestions = form.querySelectorAll('.tertiary-question');
+            console.log("Child form's tertiary questions: ");
+            console.log(tertiaryQuestions);
+
+            // Iterate over each tertiary-question
+            tertiaryQuestions.forEach(function(question) {
+                // Modify the question based on the input value
+                if (inputValue === 'yes') {
+                    question.querySelector('input').required = true;
+                    form.style.display = 'block';
+                } else {
+                    question.querySelector('input').required = false;
+                    form.style.display = 'none';
+                }
+            });
+        }
 
         function handleButtonClick(child_form, option) {
             console.log('handleButtonClick called with child_form:', child_form, 'and option:', option);
@@ -395,10 +466,56 @@
                 // Prevent the default form submission
                 event.preventDefault();
 
-                // Get all form data 
                 var formDataArray = [];
-
                 var forms = event.target.querySelectorAll('form');
+
+                // Validate the form data
+                for (let form of forms) {
+                    let inputGroups = form.querySelectorAll('.radio-group');
+                    let allGroupsValid = true;
+
+                    inputGroups.forEach(function(group) {
+                        let inputs = group.querySelectorAll('input[required], select[required], textarea[required]');
+                        let allInputsValid = true;
+                        inputs.forEach(function(input) {
+                            if (!input.checkValidity()) {
+                                allInputsValid = false;
+                                // Add a class to the invalid input to highlight it
+                                input.classList.add('invalid-input');
+                            } else {
+                                // Remove the invalid class if the input is valid
+                                input.classList.remove('invalid-input');
+                            }
+                        });
+
+                        if (!allInputsValid) {
+                            allGroupsValid = false;
+                            // Create an error message element and insert it after the group of inputs
+                            let errorMessage = group.querySelector('.error-message');
+                            if (!errorMessage) {
+                                errorMessage = document.createElement('div');
+                                errorMessage.classList.add('error-message');
+                                group.appendChild(errorMessage);
+                            }
+                            errorMessage.textContent = 'This field is required';
+                        } else {
+                            // Remove the error message if all inputs in the group are valid
+                            let errorMessage = group.querySelector('.error-message');
+                            if (errorMessage) {
+                                errorMessage.remove();
+                            }
+                        }
+                    });
+
+                    console.log("allGroupsValid: " + allGroupsValid)
+                    if (!allGroupsValid) {
+                        console.log('Form is invalid');
+                        event.preventDefault();
+                        return;
+                    }
+                }
+
+                // Get all form data 
                 forms.forEach(function(form) {
                     // Create a FormData object for each form
                     var formData = new FormData(form);
