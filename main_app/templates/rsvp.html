@@ -29,10 +29,12 @@
                     <button type="button" id="declineButton" class="attending-button">Decline</button>
                     
                     <input type="hidden" id="attendingInput" name="attending" value="" required>
+                    <input type="hidden" id="is_child" name="is_child" value="false">
                 </div>
                 
-                <div class="radio-group secondary-question">
+                <div class="radio-group secondary-question" id="wedding-meal">
                     <div class="radio-buttons">
+                        <label>Wedding meal:</label>
                         <label>
                             <input type="radio" name="food-preference" value="lamb" required />
                             <span class="radio"></span>
@@ -266,12 +268,11 @@
                     }
                     console.log("dietary restrictions: " + dietaryRestrictionsInput.value);
 
-                    if(user.is_child === false) {
-                        console.log("User is not an adult");
-                        form.querySelector('#babysitter-question').style.display = 'none';
-                    }else{
-                        console.log("User is a child");
-                        form.querySelector('#babysitter-question').style.display = 'block';}
+                    
+                    let is_child = form.querySelector('input[name="is_child"]');
+                    is_child.value = user.is_child;
+                    console.log("is_child: " + is_child.value);
+                    handleKidsOptions(form);
 
                     let babysitterInputs = form.querySelectorAll('input[name="babysitter"]');
                     babysitterInputs.forEach(input => {
@@ -344,6 +345,20 @@
                 console.error('Error:', error);
             });
         });
+
+        function handleKidsOptions(childForm) {
+            is_kid = childForm.querySelector('input[name="is_child"]').value;
+            console.log("is_kid: " + is_kid);
+            if(is_kid === "false") {
+                console.log("User is an adult");
+                childForm.querySelector('#babysitter-question').style.display = 'none';
+                childForm.querySelector('#wedding-meal').style.display = 'block';
+            }else{
+                console.log("User is a child");
+                childForm.querySelector('#babysitter-question').style.display = 'block';
+                childForm.querySelector('#wedding-meal').style.display = 'none';
+            }
+        }
 
         function handleInputChange(childForm, question, inputValue) {
             // Get the linked question ID
@@ -429,6 +444,11 @@
                     question.style.display = 'none';
                 }
             });
+
+            // Reset dispalying of certain questions for children
+            if (option === 'accepted') {
+                handleKidsOptions(form);
+            }
         }
 
         // Process data from form before sending it server-side
