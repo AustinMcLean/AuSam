@@ -404,6 +404,26 @@ label, input[type="text"] {
     margin-bottom: 7px;
 }
 
+.invalid-input {
+    border: 1px solid red;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.8em;
+    margin-top: 5px;
+}
+
+.tertiary-question-flex {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.tertiary-input::before {
+    content: "Menu options: ";
+}
+
 /* End of RSVP page */
 
 /* Password Entry page */
