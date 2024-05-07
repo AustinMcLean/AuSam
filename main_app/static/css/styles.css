@@ -88,6 +88,16 @@ img {
     cursor: pointer;
 }
 
+button[type="submit"], input[type="submit"] {
+    cursor: pointer;
+    padding: 10px;
+    border: none;
+    background-color: #e45f00;
+    color: white;
+    border-radius: 5px;
+}
+
+
 
 /*The following is for the Info page*/
 
@@ -144,16 +154,17 @@ summary {
 }
 
 #directions-page .travel-options {
-    flex: 1 0 60%; /* Take up 60% of the width on larger screens */
-    max-width: 60%; /* Take up 60% of the width on larger screens */
+    flex: 1 0 50%; /* Take up 60% of the width on larger screens */
+    max-width: 50%; /* Take up 60% of the width on larger screens */
 }
 
 #directions-page #google-maps {
     flex: 1 0 40%; /* Take up 40% of the width on larger screens */
+    margin-left: auto; /* Right align the component */
     max-width: 40%; /* Take up 40% of the width on larger screens */
 }
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
     #directions-page .travel-options,
     #directions-page #google-maps {
         flex: 1 0 100%; /* Take up 100% of the width on smaller screens */
@@ -249,6 +260,15 @@ label {
     margin: 1rem 1rem;
   }
 
+#full-name-display {
+    font-size: 1.2em; /* Make the font size 1.5 times larger */
+    font-weight: bold; /* Make the text bold */
+    color: black; /* Use a blue color for the text */
+    background-color: #f8f9fa; /* Use a light grey background color */
+    padding: 5px; /* Add some padding */
+    margin: 10px 0; /* Add some margin at the top and bottom */
+}
+
 input {
     margin: 0rem 1rem;
 }
@@ -256,6 +276,7 @@ input {
 .attending-button-container {
     display: flex;
     justify-content: flex-start;
+    margin-bottom: 10px;
   }
 
 .attending-button {
@@ -275,12 +296,12 @@ input {
 }
 
 .attending-button.selected {
-    background-color: #e45f00; /* TODO: change this colour, it's too vibrant */ 
+    background-color: #e45f00; /* Burnt Orange color */
     color: white;
 }
 
 .attending-button:hover {
-    background-color: #FF4500;  /* Burnt Orange color */
+    background-color: #FF4500;  /* TODO: change this colour, it's too vibrant */ 
 }
 
 .modal {
@@ -305,8 +326,19 @@ input {
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
   }
+
+  #modalSubmit {
+    cursor: pointer;
+    padding: 0 10px;
+    border: none;
+    background-color: #e45f00;
+    color: white;
+    border-radius: 5px;
+    height: 30px;
+    line-height: 30px;
+    align-items: top;
+}
 
   @media (max-width: 768px) {
     .modal {
@@ -333,6 +365,19 @@ input {
     }
 }
 
+#form-container-wrapper {
+    display: flex;
+    align-items: center;
+    margin-left: 17%;
+}	
+
+@media screen and (max-width: 768px) {
+    #form-container-wrapper {
+        margin-left: 0;
+    }
+    
+}
+
 #name-error-message {
     color: #a94442; /* Dark red color */
     background-color: #f2dede; /* Light red color */
@@ -341,6 +386,84 @@ input {
     margin-top: 5px; /* Add some margin at the top */
     border-radius: 4px; /* Round the corners */
     display: none; /* Hide it by default */
+}
+
+.radio-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.radio-buttons {
+    display: flex;
+    margin-top: -10px;
+}
+
+.radio-group input[type="radio"] {
+    display: none;
+}
+
+.radio-group .radio {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    border: 2px solid #e45f00;
+    border-radius: 50%;
+    transition: background 0.3s ease;
+}
+
+.radio-group input[type="radio"]:checked + .radio {
+    background: #e45f00;
+}
+
+.radio-group .label {
+    font-size: 1em;
+    line-height: 24px;
+    margin-right: 10px;
+    vertical-align: top;
+}
+
+.radio-group .radio, .label {
+    cursor: pointer;
+}
+
+.radio-group > label:first-of-type {
+    display: block;
+}
+
+input[type="text"] {
+    height: 25px;
+    padding: 5px 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 12px;
+}
+
+label, input[type="text"] {
+    vertical-align: middle;
+    margin-bottom: 7px;
+}
+
+.invalid-input {
+    border: 1px solid red;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.8em;
+    margin-top: 5px;
+}
+
+.tertiary-question-flex {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.tertiary-input::before {
+    content: "Menu options: ";
 }
 
 /* End of RSVP page */
@@ -373,7 +496,7 @@ input {
     border: none;
     background-color: #e45f00;
     color: white;
-    border-radius: 5px;
+    border-radius: 5px;;
   }
   
   .password-entry-container button:hover {
@@ -434,7 +557,7 @@ body, html {
 }
 
 .my-container {
-    max-width: 100%;
+    max-width: 85%;
     margin: 0 auto;
     padding: 0 10px;
 }
