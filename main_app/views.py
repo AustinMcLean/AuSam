@@ -49,7 +49,7 @@ def get_invite(request):
 
         try:
             # get the current invite from the database
-            current_invite = RsvpEntry.objects.get(name=name)
+            current_invite = RsvpEntry.objects.get(name__iexact=name)
             print(current_invite)
             print(current_invite.name)
             print(current_invite.attending)
