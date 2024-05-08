@@ -389,14 +389,25 @@ input {
     display: block;
 }
 
-input[type="text"] {
-    height: 25px;
-    padding: 5px 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+.text-group  input[type="text"] {
+    width: 50%;
     box-sizing: border-box;
-    margin-top: 12px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: white;
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 4px 20px 4px 40px;
+    transition: width 0.4s ease-in-out;
+    border-color: darkgray;
+    align-self: auto;
+}
+
+.text-group input[type="text"]:focus {
+    border-color: black; /* Change border color on focus */
+    box-shadow: 0 0 10px rgba(128, 128, 128, .9);/* Add a subtle glow around the input */
+    outline: none; /* Remove the browser default outline */
 }
 
 label, input[type="text"] {

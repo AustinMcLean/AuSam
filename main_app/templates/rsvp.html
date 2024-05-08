@@ -52,6 +52,11 @@
                     <label for="dietary-restrictions">Dietary restrictions<input type="text" id="dietary-restrictions" name="dietary-restrictions" /></label>
                 </div>
 
+                <div class="text-group secondary-question">
+                    <label for="song-request">Song request<input type="text" id="song-request" name="song-request" /></label>
+                </div>
+
+
                 <div class="radio-group secondary-question"  id="babysitter-question">
                     <label class="question-label" for="babysitter">Do you need a babysitter for this child for the wedding day?</label>
                     <div class="radio-buttons">
@@ -99,6 +104,11 @@
                             <span class="radio"></span>
                             <span class="label">Kid's meal</span>
                         </label>
+                        <label>
+                            <input type="radio" name="welcome-meal" value="NA" required />
+                            <span class="radio"></span>
+                            <span class="label">N/A</span>
+                        </label>
                     </div>
                 </div>
 
@@ -132,6 +142,11 @@
                             <input type="radio" name="pizza-meal" value="kids-meal" required />
                             <span class="radio"></span>
                             <span class="label">Kid's meal</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="pizza-meal" value="NA" required />
+                            <span class="radio"></span>
+                            <span class="label">N/A</span>
                         </label>
                     </div>
                 </div>
@@ -266,6 +281,12 @@
                         dietaryRestrictionsInput.value = user.dietary_restrictions;
                     }
                     console.log("dietary restrictions: " + dietaryRestrictionsInput.value);
+
+                    let songRequestInput = form.querySelector('input[name="song-request"]');
+                    if (user.song_request) {
+                        songRequestInput.value = user.song_request;
+                    }
+                    console.log("song request: " + songRequestInput.value);
 
                     
                     let is_child = form.querySelector('input[name="is_child"]');
