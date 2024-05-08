@@ -452,7 +452,7 @@
 
             secondaryQuestions.forEach(function(question) {
                 let inputs = question.querySelectorAll('input, select, textarea');
-                if (option === 'accepted') {
+                if (option !== 'decline') {
                     question.style.display = 'block';
                     question.required = true;
                     inputs.forEach(input => input.required = true);

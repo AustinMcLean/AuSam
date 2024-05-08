@@ -323,14 +323,14 @@ input {
     }
 }
 
-#form-container-wrapper {
+#form-container {
     display: flex;
     align-items: center;
     margin-left: 17%;
 }	
 
 @media screen and (max-width: 768px) {
-    #form-container-wrapper {
+    #form-container {
         margin-left: 0;
     }
     
