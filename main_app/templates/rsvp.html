@@ -85,6 +85,11 @@
                     <div class="radio-buttons tertiary-question" data-question-id="welcome-meal" style="display: none;">
                         <label>Menu options:</label>
                         <label>
+                            <input type="radio" name="welcome-meal" value="meat" required />
+                            <span class="radio"></span>
+                            <span class="label">Meat</span>
+                        </label>
+                        <label>
                             <input type="radio" name="welcome-meal" value="vegetarian" required />
                             <span class="radio"></span>
                             <span class="label">Vegetarian</span>
@@ -93,11 +98,6 @@
                             <input type="radio" name="welcome-meal" value="kids-meal" required />
                             <span class="radio"></span>
                             <span class="label">Kid's meal</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="welcome-meal" value="NA" required />
-                            <span class="radio"></span>
-                            <span class="label">N/A</span>
                         </label>
                     </div>
                 </div>
@@ -119,6 +119,11 @@
                     <div class="radio-buttons tertiary-question" data-question-id="pizza-meal" style="display: none;">
                         <label>Menu options:</label>
                         <label>
+                            <input type="radio" name="pizza-meal" value="meat" required />
+                            <span class="radio"></span>
+                            <span class="label">Meat</span>
+                        </label>
+                        <label>
                             <input type="radio" name="pizza-meal" value="vegetarian" required />
                             <span class="radio"></span>
                             <span class="label">Vegetarian</span>
@@ -127,11 +132,6 @@
                             <input type="radio" name="pizza-meal" value="kids-meal" required />
                             <span class="radio"></span>
                             <span class="label">Kid's meal</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="pizza-meal" value="NA" required />
-                            <span class="radio"></span>
-                            <span class="label">N/A</span>
                         </label>
                     </div>
                 </div>
@@ -161,10 +161,8 @@
         </form>
     </div>
 
-    <div id="form-container-wrapper">
-        <form id="form-container" action="submit-rsvp/" method="post">
-            <button type="submit" id="submitButton">Submit</button>
-        </form>
+    <div id="form-container">
+        <button type="submit" id="submit-button">Submit</button>
     </div>
 
     <script>
@@ -245,6 +243,7 @@
                         handleButtonClick(form.id, 'decline');
                     });
 
+                    // Select the button based on loaded attending value
                     if (attendingInput.value === 'accepted') {
                         acceptedButton.classList.add('selected');
                         declineButton.classList.remove('selected');
@@ -342,6 +341,9 @@
                     form.style.display = 'block';
                     document.getElementById('form-container').style.display = 'block';
                     document.getElementById('form-container').prepend(form);
+
+                    // Manually call handler to show/hide secondary questions
+                    handleButtonClick(form.id, attendingInput.value);
                 });
             })
             .catch(error => {
@@ -349,27 +351,35 @@
             });
         });
 
-        function handleKidsOptions(childForm) {
-            is_kid = childForm.querySelector('input[name="is_child"]').value;
+        function handleKidsOptions(userForm) {
+            is_kid = userForm.querySelector('input[name="is_child"]').value;
             console.log("is_kid: " + is_kid);
             if(is_kid === "false") {
                 console.log("User is an adult");
-                childForm.querySelector('#babysitter-question').style.display = 'none';
-                childForm.querySelector('#wedding-meal').style.display = 'block';
+                let babysitterQuestion = userForm.querySelector('#babysitter-question');
+                babysitterQuestion.style.display = 'none';
+                babysitterQuestion.querySelectorAll('input, select, textarea').forEach(input => input.required = false);
+                let weddingMeal = userForm.querySelector('#wedding-meal');
+                weddingMeal.style.display = 'block';
+                weddingMeal.querySelectorAll('input, select, textarea').forEach(input => input.required = true);
             }else{
                 console.log("User is a child");
-                childForm.querySelector('#babysitter-question').style.display = 'block';
-                childForm.querySelector('#wedding-meal').style.display = 'none';
+                let babysitterQuestion = userForm.querySelector('#babysitter-question');
+                babysitterQuestion.style.display = 'block';
+                babysitterQuestion.querySelectorAll('input, select, textarea').forEach(input => input.required = true);
+                let weddingMeal = userForm.querySelector('#wedding-meal');
+                weddingMeal.style.display = 'none';
+                weddingMeal.querySelectorAll('input, select, textarea').forEach(input => input.required = false);
             }
         }
 
-        function handleInputChange(childForm, question, inputValue) {
+        function handleInputChange(userForm, question, inputValue) {
             // Get the linked question ID
             let linkedQuestionId = question.dataset.linkedQuestion;
             console.log("linkedQuestionId: " + linkedQuestionId);
 
            // Get the linked question element
-           let linkedQuestion = childForm.querySelector(`.tertiary-question[data-question-id="${linkedQuestionId}"]`);
+           let linkedQuestion = userForm.querySelector(`.tertiary-question[data-question-id="${linkedQuestionId}"]`);
             console.log("linkedQuestion: ");
             console.log(linkedQuestion);
             console.log("inputValue: " + inputValue);
@@ -397,20 +407,20 @@
             console.log("linkedQuestion input required: " + linkedQuestion.querySelector('input').required);
         }
 
-        function handleButtonClick(child_form, option) {
-            console.log('handleButtonClick called with child_form:', child_form, 'and option:', option);
+        function handleButtonClick(userForm, option) {
+            console.log('handleButtonClick called with userForm:', userForm, 'and option:', option);
 
             // Get the form and check if it exists
-            let form = document.getElementById(child_form);
+            let form = document.getElementById(userForm);
             if (!form) {
-                console.log('Form not found:', child_form);
+                console.log('Form not found:', userForm);
                 return;
             }
 
             // Get the attendingInput and check if it exists
             let attendingInput = form.querySelector('#attendingInput');
             if (!attendingInput) {
-                console.log('attendingInput not found in form:', child_form);
+                console.log('attendingInput not found in form:', userForm);
                 return;
             }
 
@@ -420,14 +430,14 @@
             // Get the acceptedButton and check if it exists
             let acceptedButton = form.querySelector('#acceptedButton');
             if (!acceptedButton) {
-                console.log('acceptedButton not found in form:', child_form);
+                console.log('acceptedButton not found in form:', userForm);
                 return;
             }
 
             // Get the declineButton and check if it exists
             let declineButton = form.querySelector('#declineButton');
             if (!declineButton) {
-                console.log('declineButton not found in form:', child_form);
+                console.log('declineButton not found in form:', userForm);
                 return;
             }
 
@@ -441,10 +451,15 @@
             console.log(secondaryQuestions);
 
             secondaryQuestions.forEach(function(question) {
+                let inputs = question.querySelectorAll('input, select, textarea');
                 if (option === 'accepted') {
                     question.style.display = 'block';
+                    question.required = true;
+                    inputs.forEach(input => input.required = true);
                 } else {
                     question.style.display = 'none';
+                    inputs.forEach(input => input.required = false);
+                    console.log("question: " + question.id + " hidden and required: " + question.required);
                 }
             });
 
@@ -456,21 +471,21 @@
 
         // Process data from form before sending it server-side
         document.addEventListener("DOMContentLoaded", function() {
-            console.log(document.getElementById('form-container'));
-            document.getElementById('form-container').addEventListener('submit', function (event) {
+            console.log('form container:' + document.getElementById('form-container'));
+            document.getElementById('submit-button').addEventListener('click', function (event) {
 
                 console.log("form-contianer Form submitted");
                 
                 // Needed this line to stop bug causing form to submit twice when I moved it to Django
                 event.stopImmediatePropagation();
-                // Prevent the default form submission
-                event.preventDefault();
 
                 var formDataArray = [];
-                var forms = event.target.querySelectorAll('form');
+                let forms = document.getElementById('form-container').querySelectorAll('form');
+                console.log("forms: " + forms);
 
                 // Validate the form data
                 for (let form of forms) {
+                    console.log("form: " + form);
                     let inputGroups = form.querySelectorAll('.radio-group');
                     let allGroupsValid = true;
 
@@ -509,8 +524,7 @@
 
                     console.log("allGroupsValid: " + allGroupsValid)
                     if (!allGroupsValid) {
-                        console.log('Form is invalid');
-                        event.preventDefault();
+                        console.log('Form:' + form.id + ' is invalid');
                         return;
                     }
                 }
@@ -541,7 +555,7 @@
                     localStorage.setItem(`${name}_Data`, JSON.stringify(form));
                 });
 
-                // Use a relative path to send the data to the Django view
+                // Send the form data to the server, using a relative path to the Django view
                 fetch('../../submit-rsvp/', {
                     method: 'POST',
                     headers: {
@@ -568,9 +582,6 @@
 
                 console.log("formDataArray after fetch:");
                 console.log(JSON.stringify(formDataArray));
-
-                // Reset the form or redirect the user as needed
-                event.target.reset();
             });
         });
 
