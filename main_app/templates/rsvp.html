@@ -271,7 +271,6 @@
                     let is_child = form.querySelector('input[name="is_child"]');
                     is_child.value = user.is_child;
                     console.log("is_child: " + is_child.value);
-                    handleKidsOptions(form);
 
                     let babysitterInputs = form.querySelectorAll('input[name="babysitter"]');
                     babysitterInputs.forEach(input => {
@@ -342,8 +341,9 @@
                     document.getElementById('form-container').style.display = 'block';
                     document.getElementById('form-container').prepend(form);
 
-                    // Manually call handler to show/hide secondary questions
+                    // Manually call handlesr to show/hide certain questions
                     handleButtonClick(form.id, attendingInput.value);
+                    handleKidsOptions(form);
                 });
             })
             .catch(error => {
