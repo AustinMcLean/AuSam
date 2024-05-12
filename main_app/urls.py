@@ -13,4 +13,6 @@ urlpatterns = [
     path('submit-rsvp/', views.submit_rsvp, name="submit_rsvp"),
     path('password_entry/', views.password_entry, name='password_entry'),
     path('get_invite/', views.get_invite, name='get_invite'),
+    path('thanks_accepted/', views.thanks_accepted, name='thanks_accepted'),
+    path('thanks_declined/', views.thanks_declined, name='thanks_declined'),
 ]
