@@ -465,7 +465,7 @@ label, input[type="text"] {
     border: none;
     background-color: #e45f00;
     color: white;
-    border-radius: 5px;;
+    border-radius: 5px;
   }
   
   .password-entry-container button:hover {
@@ -478,6 +478,32 @@ label, input[type="text"] {
   }
 
 /* End of Password Entry page */
+
+/* Thanks page */
+
+.thanks-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+    border-radius: 5px;
+    text-align: center;
+  }
+  
+  .thanks-container button {
+    cursor: pointer;
+    padding: 10px;
+    border: none;
+    background-color: #e45f00;
+    color: white;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+
+  /* End of Thanks page */
 
 /* Media Queries */
 /* Hide the original navbar on smaller screens */

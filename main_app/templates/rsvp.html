@@ -603,6 +603,11 @@
 
                 console.log("formDataArray after fetch:");
                 console.log(JSON.stringify(formDataArray));
+
+                // Redirect to the thank you page
+                if(formDataArray.length > 0){
+                    window.location.href = '/thanks';
+                }
             });
         });
 

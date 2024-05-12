@@ -29,6 +29,9 @@ def info(request):
 def rsvp(request):
     return render(request, "rsvp.html")
 
+def thanks(request):
+    return render(request, "thanks.html")
+
 def password_entry(request):
     if request.method == 'POST':
         password = request.POST.get('password')
