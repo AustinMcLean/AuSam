@@ -98,26 +98,24 @@ button[type="submit"], input[type="submit"] {
 }
 
 
-
 /*The following is for the Info page*/
 
-#info_page {
+.info_page {
     margin: 100px auto;
-    text-align: center;
-    text-decoration: none;
-}
-
-details {
-    margin: 10px 100px;
-    text-align: center;
-}
-
-details > p,ul,ol{
     text-align: left;
+    
 }
 
-summary {
+.info_page h3{
     font-weight: bold;
+} 
+
+.info_page p, li{
+    color: #666;
+}
+
+.info_page hr{
+    border-color:#666;
 }
 
 .bold-orange{
@@ -193,9 +191,51 @@ summary {
     height: 333px;
     object-fit: cover;
 }
-
 /*End of Photos page*/
 
+/*People Page*/
+.people img {
+    width: 100%;
+    max-width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.groomsmen, .bridesmaid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 45px;
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 20px 10px;
+}
+
+
+.hisParents, .herParents{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 45px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px 10px;
+}
+
+.people figcaption{
+    text-align: center;
+}
+
+.people h2{
+    text-align: center;
+    margin-top: 50px;
+}
+/*End of People Page*/
 
 /*Itinerary page*/
 #itinerary_wednesday {

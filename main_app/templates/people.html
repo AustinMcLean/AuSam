@@ -1,0 +1,82 @@
+{% extends "base.html" %} {% block title %} AuSam - Our People {% endblock %}
+{% block content %}
+
+<body>
+    <hr>
+
+    <div class="people">
+        {%load static %}
+        
+        <h2>His People</h2>
+        <div class="groomsmen">
+            <figure>
+                <img src="{% static 'page-specific/home/Sanjit.jpg' %}" alt="Groomsmen">
+                <figcaption><strong>Sanjit Kooner</strong> <br> Groomsmen</figcaption>
+            </figure>
+
+            <figure>
+                <img src="{% static 'page-specific/home/Alex.jpg' %}" alt="Groomsmen">
+                <figcaption><strong>Alex Pontarelli</strong>  <br> Groomsmen</figcaption>
+            </figure>
+
+            <figure>
+                <img src="{% static 'page-specific/home/Glen.jpg' %}" alt="Groomsmen">
+                <figcaption><strong>Glen Alfred</strong> <br> Groomsmen</figcaption>
+            </figure>
+
+            <figure>
+                <img src="{% static 'page-specific/home/Michael.jpg' %}" alt="Groomsmen">
+                <figcaption><strong>Michael Makis</strong> <br> Groomsmen</figcaption>
+            </figure>
+        </div>
+
+        <div class="hisParents">
+            <figure>
+                <img src="{% static 'page-specific/home/AustinandSamEngagement-web_res.jpg' %}" alt="Father of the Groom">
+                <figcaption>Person 1 <br> His Father</figcaption>
+            </figure>
+
+            <figure>
+                <img src="{% static 'page-specific/home/AustinandSamEngagement-web_res.jpg' %}" alt="Mother of the Groom">
+                <figcaption>Person 2 <br> His Mother</figcaption>
+            </figure>
+        </div>
+
+        <h2>Her People</h2>
+        <div class="bridesmaid">
+            <figure>
+                <img src="{% static 'page-specific/home/Tina.jpg' %}" alt="Maid of Honour">
+                <figcaption><strong>Tina Volpe (ft Stella Bean)</strong> <br> Maid of Honour</figcaption>
+            </figure>
+
+            <figure>
+                <img src="{% static 'page-specific/home/Kayla.jpg' %}" alt="Bridesmaid">
+                <figcaption><strong>Kayla Fulginiti-Meath</strong><br> Bridesmaid</figcaption>
+            </figure>
+
+            <figure>
+                <img src="{% static 'page-specific/home/Gabrielle.jpg' %}" alt="Bridesmaid">
+                <figcaption><strong>Gabrielle Juneau</strong> <br> Bridesmaid</figcaption>
+            </figure>
+
+            <figure>
+                <img src="{% static 'page-specific/home/Brianna.jpg' %}" alt="Bridesmaid">
+                <figcaption><strong>Brianna Ducas</strong> <br> Bridesmaid</figcaption>
+            </figure>
+        </div>
+
+        <div class="herParents">
+            <figure>
+                <img src="{% static 'page-specific/home/Gerry.jpg' %}" alt="Father of the Bride">
+                <figcaption><strong>Gerry Fulginiti </strong> <br> Father of the Bride</figcaption>
+            </figure>
+
+            <figure>
+                <img src="{% static 'page-specific/home/Pina.jpg' %}" alt="Mother of the Bride">
+                <figcaption><strong>Pina Di Paola</strong><br> Mother of the Bride</figcaption>
+            </figure>
+        </div>
+    </div>
+
+</body>
+{% endblock %}
