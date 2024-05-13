@@ -25,7 +25,7 @@ class RsvpEntry(models.Model):
 def send_notification(sender, instance, **kwargs):
     message = f"{instance.name}\n\n Attending: {instance.attending}\n\n Wedding Meal: {instance.meal}\n\n Dietary Restrictions: {instance.dietary_restrictions}\n\n Song Request: {instance.song_request}\n\n Babysitter: {instance.babysitter}\n\n Welcome Dinner: {instance.welcome_dinner}\n\n Welcome Meal: {instance.welcome_meal}\n\n Pizza: {instance.pizza}\n\n Pizza Meal: {instance.pizza_meal}\n\n Staying: {instance.stay} days"
     send_mail(
-        f"RSVP Submitted for {instance.name}",
+        f"RSVP submitted for {instance.name}",
         message,
         'austinmclean148@gmail.com',
         ['austin_mclean@hotmail.com', 'fulginiti.samantha@gmail.com'],
