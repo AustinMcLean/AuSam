@@ -1,4 +1,7 @@
 from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from django.core.mail import send_mail
 
 # Create your models here.
 
@@ -17,3 +20,14 @@ class RsvpEntry(models.Model):
     pizza_meal = models.CharField(max_length=50, null=True, blank=True)
     stay = models.CharField(max_length=20, null=True, blank=True)
 
+
+@receiver(post_save, sender=RsvpEntry)
+def send_notification(sender, instance, **kwargs):
+    message = f"RSVP submitted for {instance.name}\n\n Attending: {instance.attending}\n\n Meal: {instance.meal}\n\n Dietary Restrictions: {instance.dietary_restrictions}\n\n Song Request: {instance.song_request}\n\n Babysitter: {instance.babysitter}\n\n Welcome Dinner: {instance.welcome_dinner}\n\n Welcome Meal: {instance.welcome_meal}\n\n Pizza: {instance.pizza}\n\n Pizza Meal: {instance.pizza_meal}\n\n Stay: {instance.stay}"
+    send_mail(
+        'RSVP Submitted',
+        message,
+        'austinmclean148@gmail.com',
+        ['austin_mclean@hotmail.com', 'fulginiti.samantha@gmail.com'],
+        fail_silently=False,
+    )
