@@ -128,3 +128,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Session settings
 SESSION_COOKIE_AGE = 3600  # 60 minutes
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+
+# Email settings
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'apikey' # this is exactly the value 'apikey'
+EMAIL_HOST_PASSWORD = os.environ.get('SENDGRID_API_KEY')
+EMAIL_PORT = 587
+# TODO: Use port 465 for SSL connections
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'austinmclean148@gmail.com'
