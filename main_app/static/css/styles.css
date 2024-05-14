@@ -5,14 +5,18 @@ body {
 
 #header h1 {
     text-align: center;
-    font-size: 60px;
+    font-size: 100px;
     margin-bottom: 0;
+    font-family: Edwardian Script ITC, cursive;
 }
 
 #header h2 {
     text-align: center;
     color: #e45f00;
-    margin-top: 2px;
+    margin-top: 0px;
+    margin-bottom: 25px;
+    font-family: Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 35px;
 }
 
 .navbar-original{
@@ -58,13 +62,19 @@ img {
     text-align: center;
 }
 
-.wedding-schedule:after {
-    content: ""; 
-    display: block;
-    margin: 0 auto;
-    width: 40%;
-    padding-top: 20px;
-    border-bottom: 1px solid #bbb;
+#wedding-day-schedule h2 {
+    font-family: Edwardian Script ITC, cursive;
+    font-size: 60px;
+}
+
+.wedding-schedule {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 8px auto;
+    padding: 10px;
+    border-radius: 5px;
+    font-family: Calibri, 'Trebuchet MS', sans-serif;
 }
 
 #rsvp-button-home {
@@ -101,7 +111,7 @@ button[type="submit"], input[type="submit"] {
 /*The following is for the Info page*/
 
 .info_page {
-    margin: 100px auto;
+    margin: 50px auto;
     text-align: left;
     
 }
