@@ -1,6 +1,6 @@
 body {
     background-color: #ebdfd8;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Verdana', sans-serif;
 }
 
 #header h1 {
@@ -15,7 +15,7 @@ body {
     color: #e45f00;
     margin-top: 0px;
     margin-bottom: 25px;
-    font-family: Calibri, 'Trebuchet MS', sans-serif;
+    font-family: Merriweather, serif;
     font-size: 35px;
 }
 
@@ -74,7 +74,12 @@ img {
     margin: 8px auto;
     padding: 10px;
     border-radius: 5px;
-    font-family: Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.wedding-schedule h3 {
+    font-size: 20px;
+    margin: 0;
+    font-family: 'Verdana', sans-serif;
 }
 
 #rsvp-button-home {
@@ -96,6 +101,7 @@ img {
     margin: 4px 2px;
     transition-duration: 0.4s;
     cursor: pointer;
+    font-family: 'Merriweather', serif;
 }
 
 button[type="submit"], input[type="submit"] {
@@ -117,7 +123,7 @@ button[type="submit"], input[type="submit"] {
 }
 
 .info_page h3{
-    font-weight: bold;
+    font-family: Verdana, sans-serif;
 } 
 
 .info_page p, li{
@@ -146,6 +152,7 @@ button[type="submit"], input[type="submit"] {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .travel-options {
@@ -257,12 +264,18 @@ button[type="submit"], input[type="submit"] {
 .people h2{
     text-align: center;
     margin-top: 50px;
+    font-family: Verdana, sans-serif;
 }
 /*End of People Page*/
 
 /*Itinerary page*/
+#itinerary-page {
+    font-family: Verdana, sans-serif !important;
+}
+
 #itinerary_wednesday {
     text-align: center;
+    font-family:  Verdana, sans-serif !important;
 }
 
 #itinerary_thursday {
@@ -327,7 +340,7 @@ input {
 }
 
 .attending-button:hover {
-    background-color: #FF4500;  /* TODO: change this colour, it's too vibrant */ 
+    background-color: #e45f00;
 }
 
 .modal {
@@ -543,7 +556,7 @@ label, input[type="text"] {
   }
   
   .password-entry-container button:hover {
-    background-color: #FF4500;
+    background-color: #e45f00;
   }
 
   .error {
