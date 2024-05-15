@@ -197,8 +197,8 @@ button[type="submit"], input[type="submit"] {
 
 .photos img {
     width: 100%;
-    max-width: 500px;
-    height: 333px;
+    max-width: 333px;
+    height: 500px;
     object-fit: cover;
 }
 /*End of Photos page*/
