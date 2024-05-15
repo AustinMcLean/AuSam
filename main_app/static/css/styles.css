@@ -1,5 +1,5 @@
 body {
-    background-color: #fbf7f5;
+    background-color: #ebdfd8;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -133,6 +133,10 @@ button[type="submit"], input[type="submit"] {
     font-weight: bold;
 }
 
+.info_page a {
+    color: #e45f00;
+}
+
 /*End of Info page*/
 
 
@@ -151,7 +155,16 @@ button[type="submit"], input[type="submit"] {
 }
 
 #google-maps {
+    display: flex;
+    flex-wrap: wrap;
     margin: 50px 0;
+}
+
+@media screen and (max-width: 768px){
+    #google-maps {
+        margin: 50px auto;
+        width: 100%;
+    }
 }
 
 #directions-page p {
@@ -259,6 +272,11 @@ button[type="submit"], input[type="submit"] {
 #itinerary_friday {
     text-align: center;
 }
+
+#submit-button {
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
 /*End of Itinerary page*/
 
 /* RSVP page */
@@ -272,7 +290,7 @@ label {
     font-size: 1.2em; /* Make the font size 1.5 times larger */
     font-weight: bold; /* Make the text bold */
     color: black; /* Use a blue color for the text */
-    background-color: #f8f9fa; /* Use a light grey background color */
+    background-color: #ebdfd8; /* Use a light grey background color */
     padding: 5px; /* Add some padding */
     margin: 10px 0; /* Add some margin at the top and bottom */
 }
@@ -323,14 +341,14 @@ input {
     transform: translate(-50%, -50%);
 
     padding: 20px;
-    background-color: #fff;
+    background-color: #ebdfd8;
 
     /* Add some styles for the modal content */
     overflow: auto;
 }
   
   .modal-content {
-    background-color: #fefefe;
+    background-color: #cfad99;
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
@@ -352,6 +370,7 @@ input {
     .modal {
         font-size: 16px;
         width: 80%;
+        top: 70%;
 
         h2 {
             font-size: 22px;
@@ -485,6 +504,11 @@ label, input[type="text"] {
     content: "Menu options: ";
 }
 
+#attendance-form label {
+    background-color: #ebdfd8;
+    color: #ebdfd8;
+}
+
 /* End of RSVP page */
 
 /* Password Entry page */
@@ -525,6 +549,12 @@ label, input[type="text"] {
   .error {
     color: red;
     font-weight: bold;
+  }
+
+  @media screen and (max-width: 768px) {
+    .password-entry-container {
+        top: 60%;
+    }
   }
 
 /* End of Password Entry page */
@@ -603,7 +633,7 @@ label, input[type="text"] {
 /* end of Media Queries */
 
 .navbar {
-    background-color: #fbf7f5 !important;
+    background-color: #ebdfd8 !important;
 }
 
 body, html {
