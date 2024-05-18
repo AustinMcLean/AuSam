@@ -596,6 +596,22 @@
                     console.log("Response from server:");
                     console.log(data);
                     alert('POST request sent successfully');
+
+                    // Redirect to a thank you page
+                    if(formDataArray.length > 0){
+                        let isAttending = false;
+                        for (let form of formDataArray) {
+                            if (form.attending === "accepted") {
+                                isAttending = true;
+                                break;
+                            }
+                        }
+                        if (isAttending) {
+                            window.location.href = `{% url 'thanks_accepted' %}`;
+                        } else {
+                            window.location.href = `{% url 'thanks_declined' %}`;
+                        }
+                    }
                 })
                 .catch(error => {
                     // Handle errors
@@ -605,25 +621,6 @@
 
                 console.log("formDataArray after fetch:");
                 console.log(JSON.stringify(formDataArray));
-
-                // TODO: remove
-                alert('Testing');
-
-                // Redirect to a thank you page
-                if(formDataArray.length > 0){
-                    let isAttending = false;
-                    for (let form of formDataArray) {
-                        if (form.attending === "accepted") {
-                            isAttending = true;
-                            break;
-                        }
-                    }
-                    if (isAttending) {
-                        window.location.href = `{% url 'thanks_accepted' %}`;
-                    } else {
-                        window.location.href = `{% url 'thanks_declined' %}`;
-                    }
-                }
             });
         });
 
