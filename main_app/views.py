@@ -97,14 +97,22 @@ def submit_rsvp(request):
             print(form)
             print(form.get('full-name'))
             print(form.get('attending'))
-            print(form.get('invite'))
 
             current_rsvp = RsvpEntry.objects.get(name=form.get('full-name'))
 
             if not current_rsvp:
                 return JsonResponse({'error': 'No RSVP found for given name.'}, status=404)
 
-            # TODO: Do some type validation here - probably better than on client side
+            # Data validation
+            if not form.get('full-name'):
+                return JsonResponse({'error': 'Full name is required'}, status=400)
+            
+            if form.get('attending') not in ['accepted', 'decline']:
+                return JsonResponse({'error': 'Invalid value for attending.'}, status=400)
+            
+            if current_rsvp.invite is None:
+                return JsonResponse({'error': 'No invite found for given name.'}, status=404)
+
             current_rsvp.attending = form.get('attending')
             current_rsvp.meal = form.get('food-preference')
             current_rsvp.dietary_restrictions = form.get('dietary-restrictions')
@@ -115,9 +123,13 @@ def submit_rsvp(request):
             current_rsvp.pizza = form.get('pizza')
             current_rsvp.pizza_meal = form.get('pizza-meal')
             current_rsvp.stay = form.get('stay')
-            current_rsvp.save()
+
+            try:
+                current_rsvp.save()
+            except Exception as e:
+                return JsonResponse({'error': f'Error saving RSVP: {str(e)}'}, status=500)
         
-        return JsonResponse({'message': f'RSVP submitted successfully for'})
+        return JsonResponse({'message': f'RSVP submitted successfully for  {form.get("full-name")}'})
     
     # Handle other HTTP methods or invalid requests
     return JsonResponse({'error': 'Invalid request method'})

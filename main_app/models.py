@@ -21,6 +21,7 @@ class RsvpEntry(models.Model):
     stay = models.CharField(max_length=20, null=True, blank=True)
 
 
+'''
 @receiver(post_save, sender=RsvpEntry)
 def send_notification(sender, instance, **kwargs):
     message = f"{instance.name}\n\n Attending: {instance.attending}\n\n Wedding Meal: {instance.meal}\n\n Dietary Restrictions: {instance.dietary_restrictions}\n\n Song Request: {instance.song_request}\n\n Babysitter: {instance.babysitter}\n\n Welcome Dinner: {instance.welcome_dinner}\n\n Welcome Meal: {instance.welcome_meal}\n\n Pizza: {instance.pizza}\n\n Pizza Meal: {instance.pizza_meal}\n\n Staying: {instance.stay} days"
@@ -31,3 +32,4 @@ def send_notification(sender, instance, **kwargs):
         ['austin_mclean@hotmail.com', 'fulginiti.samantha@gmail.com'],
         fail_silently=False,
     )
+'''

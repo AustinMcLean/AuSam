@@ -3,7 +3,8 @@
 {% block content %}
   <div class="thanks-container">
     <h2>See you in Assisi!</h2>
-    <iframe src="https://giphy.com/embed/l1ugg8MSaCUpzyyyY" width="380" height="260" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+    {%load static %}
+    <img src="{% static 'page-specific/home/party_gif.gif' %}" alt="My GIF">
     <button type="button" onclick="window.location.href=`{% url 'home' %}`">Back to home page</button>
   </div>
 {% endblock %}
