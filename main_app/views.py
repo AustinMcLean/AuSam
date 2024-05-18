@@ -86,7 +86,10 @@ def get_invite(request):
 
 @csrf_exempt
 def submit_rsvp(request):
+    print("In submit_rsvp")
+
     if request.method == 'POST':
+        print("In submit_rsvp POST method")
 
         request_body_json = json.loads(request.body)
         print("On the server side: ")

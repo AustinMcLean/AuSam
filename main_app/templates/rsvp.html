@@ -599,6 +599,7 @@
                 .catch(error => {
                     // Handle errors
                     console.error('Error:', error);
+                    alert('Error sending POST request: ' + error.message);
                 });
 
                 console.log("formDataArray after fetch:");
