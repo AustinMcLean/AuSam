@@ -80,8 +80,8 @@ WSGI_APPLICATION = 'site_config.wsgi.application'
 
 DATABASES = {
     #'default': dj_database_url.config(default='postgres://localhost')
-    #'ENGINE': 'django.db.backends.dummy',
-    #'default': 'memory',
+    'ENGINE': 'django.db.backends.dummy',
+    'NAME': BASE_DIR / 'db.sqlite3',
 }
 
 
