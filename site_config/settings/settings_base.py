@@ -79,7 +79,9 @@ WSGI_APPLICATION = 'site_config.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(default='postgres://localhost')
+    #'default': dj_database_url.config(default='postgres://localhost')
+    #'ENGINE': 'django.db.backends.dummy',
+    #'default': 'memory',
 }
 
 
