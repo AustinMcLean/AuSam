@@ -4,6 +4,7 @@ from django.dispatch import receiver
 from django.core.mail import send_mail
 
 # Create your models here.
+'''
 
 class RsvpEntry(models.Model):
     name = models.CharField(max_length=100, db_index=True)
@@ -19,6 +20,7 @@ class RsvpEntry(models.Model):
     pizza = models.CharField(max_length=20, null=True, blank=True)
     pizza_meal = models.CharField(max_length=50, null=True, blank=True)
     stay = models.CharField(max_length=20, null=True, blank=True)
+'''
 
 
 '''

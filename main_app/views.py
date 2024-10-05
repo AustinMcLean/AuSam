@@ -4,7 +4,7 @@ from django.contrib.auth.hashers import check_password
 from django.http import JsonResponse
 from django.shortcuts import render, redirect, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from .models import RsvpEntry
+#from .models import RsvpEntry
 import json
 import os
 
@@ -29,6 +29,7 @@ def info(request):
 def people(request):
     return render(request, "people.html")
 
+'''
 def rsvp(request):
     return render(request, "rsvp.html")
 
@@ -37,6 +38,7 @@ def thanks_accepted(request):
 
 def thanks_declined(request):
     return render(request, "thanks_declined.html")
+'''
 
 def password_entry(request):
     if request.method == 'POST':
@@ -50,6 +52,7 @@ def password_entry(request):
             messages.error(request, 'Incorrect password')
     return render(request, 'password_entry.html')
 
+'''
 @csrf_exempt
 def get_invite(request):
     if request.method == 'GET':
@@ -136,3 +139,4 @@ def submit_rsvp(request):
     
     # Handle other HTTP methods or invalid requests
     return JsonResponse({'error': 'Invalid request method'})
+'''
