@@ -1,0 +1,662 @@
+body {
+    background-color: #ebdfd8;
+    font-family: 'Verdana', sans-serif;
+}
+
+#header h1 {
+    text-align: center;
+    font-size: 100px;
+    margin-bottom: 0;
+    font-family: Edwardian Script ITC, cursive;
+}
+
+#header h2 {
+    text-align: center;
+    color: #e45f00;
+    margin-top: 0px;
+    margin-bottom: 25px;
+    font-family: Merriweather, serif;
+    font-size: 35px;
+}
+
+.navbar-original{
+    width: 75%;
+    height: 60px;
+    margin: auto;
+}
+
+.navbar-original ul{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: nowrap;
+    align-items: center;
+    padding-inline-start: 0;
+    margin-block: 0;
+    height: 100%;
+}
+
+.navbar-original ul li{
+    padding: 10px;
+    display: block;
+}
+
+.navbar-original ul li a{
+    color: black;
+    text-decoration: none;
+    font-size: 25px;
+    font-family:'Times New Roman', Times, serif;
+}
+
+.navbar-original ul li a:hover{
+      text-decoration: underline;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 15px auto;
+}
+
+#wedding-day-schedule {
+    text-align: center;
+}
+
+#wedding-day-schedule h2 {
+    font-family: Edwardian Script ITC, cursive;
+    font-size: 60px;
+}
+
+.wedding-schedule {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 8px auto;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.wedding-schedule h3 {
+    font-size: 20px;
+    margin: 0;
+    font-family: 'Verdana', sans-serif;
+}
+/*
+#rsvp-button-home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+}
+
+#rsvp-button-home button {
+    border: none;
+    background-color: #e45f00;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 22px;
+    padding: 17px 12px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    font-family: 'Merriweather', serif;
+}
+*/
+button[type="submit"], input[type="submit"] {
+    cursor: pointer;
+    padding: 10px;
+    border: none;
+    background-color: #e45f00;
+    color: white;
+    border-radius: 5px;
+}
+
+
+/*The following is for the Info page*/
+
+.info_page {
+    margin: 50px auto;
+    text-align: left;
+    
+}
+
+.info_page h3{
+    font-family: Verdana, sans-serif;
+} 
+
+.info_page p, li{
+    color: #666;
+}
+
+.info_page hr{
+    border-color:#666;
+}
+
+.bold-orange{
+    color: #e45f00;
+    font-weight: bold;
+}
+
+.info_page a {
+    color: #e45f00;
+}
+
+/*End of Info page*/
+
+
+/* Directions page */
+
+#directions-page {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.travel-options {
+    margin: 30px 20px;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+#google-maps {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 50px 0;
+}
+
+@media screen and (max-width: 768px){
+    #google-maps {
+        margin: 50px auto;
+        width: 100%;
+    }
+}
+
+#directions-page p {
+    /* Make the text easy to read */
+    font-size: 16px;
+    line-height: 1.5;
+    color: #666;
+}
+
+#directions-page .travel-options {
+    flex: 1 0 50%; /* Take up 60% of the width on larger screens */
+    max-width: 50%; /* Take up 60% of the width on larger screens */
+}
+
+#directions-page #google-maps {
+    flex: 1 0 40%; /* Take up 40% of the width on larger screens */
+    margin-left: auto; /* Right align the component */
+    max-width: 40%; /* Take up 40% of the width on larger screens */
+}
+
+@media (max-width: 992px) {
+    #directions-page .travel-options,
+    #directions-page #google-maps {
+        flex: 1 0 100%; /* Take up 100% of the width on smaller screens */
+        max-width: 100%; /* Take up 100% of the width on smaller screens */
+    }
+}
+
+/* End of Directions page */
+
+/*Photos page*/
+.photos {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 20px 10px;
+}
+
+.photos img {
+    width: 100%;
+    max-width: 333px;
+    height: 500px;
+    object-fit: cover;
+}
+/*End of Photos page*/
+
+/*People Page*/
+.people img {
+    width: 100%;
+    max-width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.groomsmen, .bridesmaid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 45px;
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 20px 10px;
+}
+
+
+.hisParents, .herParents{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 45px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px 10px;
+}
+
+.people figcaption{
+    text-align: center;
+}
+
+.people h2{
+    text-align: center;
+    margin-top: 50px;
+    font-family: Verdana, sans-serif;
+}
+/*End of People Page*/
+
+/*Itinerary page*/
+#itinerary-page {
+    font-family: Verdana, sans-serif !important;
+}
+
+#itinerary_wednesday {
+    text-align: center;
+    font-family:  Verdana, sans-serif !important;
+}
+
+#itinerary_thursday {
+    text-align: center;
+}
+
+#itinerary_friday {
+    text-align: center;
+}
+
+#submit-button {
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+/*End of Itinerary page*/
+
+/* RSVP page */
+
+label {
+    display: block;
+    margin: 1rem 1rem;
+  }
+
+#full-name-display {
+    font-size: 1.2em; /* Make the font size 1.5 times larger */
+    font-weight: bold; /* Make the text bold */
+    color: black; /* Use a blue color for the text */
+    background-color: #ebdfd8; /* Use a light grey background color */
+    padding: 5px; /* Add some padding */
+    margin: 10px 0; /* Add some margin at the top and bottom */
+}
+
+input {
+    margin: 0rem 1rem;
+}
+
+.attending-button-container {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+  }
+
+.attending-button {
+    flex: 1 0 auto;
+    padding: 10px 20px;
+    margin: 5px;
+    border: 2px solid black;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: center;
+    max-width: 180px;
+    width: 100%;
+    height: 100%;
+    max-height: 100px;
+}
+
+.attending-button.selected {
+    background-color: #e45f00; /* Burnt Orange color */
+    color: white;
+}
+
+.attending-button:hover {
+    background-color: #e45f00;
+}
+
+.modal {
+    width: 40%; 
+    height: auto;
+
+    /* Center  */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    padding: 20px;
+    background-color: #ebdfd8;
+
+    /* Add some styles for the modal content */
+    overflow: auto;
+}
+  
+  .modal-content {
+    background-color: #cfad99;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+  }
+
+  #modalSubmit {
+    cursor: pointer;
+    padding: 0 10px;
+    border: none;
+    background-color: #e45f00;
+    color: white;
+    border-radius: 5px;
+    height: 30px;
+    line-height: 30px;
+    align-items: top;
+}
+
+  @media (max-width: 768px) {
+    .modal {
+        font-size: 16px;
+        width: 80%;
+        top: 70%;
+
+        h2 {
+            font-size: 22px;
+        }
+    }
+
+    .modal input,
+    .modal button {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .modal input {
+        margin-top: 5px;
+        margin-bottom: 10px;
+    }
+}
+
+#form-container {
+    display: flex;
+    align-items: center;
+    margin-left: 17%;
+}	
+
+@media screen and (max-width: 768px) {
+    #form-container {
+        margin-left: 0;
+    }
+    
+}
+
+#name-error-message {
+    color: #a94442; /* Dark red color */
+    background-color: #f2dede; /* Light red color */
+    border-color: #ebccd1; /* Medium red color */
+    padding: 10px; /* Add some padding */
+    margin-top: 5px; /* Add some margin at the top */
+    border-radius: 4px; /* Round the corners */
+    display: none; /* Hide it by default */
+}
+
+.radio-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.radio-buttons {
+    display: flex;
+    margin-top: -10px;
+}
+
+.radio-group input[type="radio"] {
+    display: none;
+}
+
+.radio-group .radio {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    border: 2px solid #e45f00;
+    border-radius: 50%;
+    transition: background 0.3s ease;
+}
+
+.radio-group input[type="radio"]:checked + .radio {
+    background: #e45f00;
+}
+
+.radio-group .label {
+    font-size: 1em;
+    line-height: 24px;
+    margin-right: 10px;
+    vertical-align: top;
+}
+
+.radio-group .radio, .label {
+    cursor: pointer;
+}
+
+.radio-group > label:first-of-type {
+    display: block;
+}
+
+.text-group  input[type="text"] {
+    width: 50%;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: white;
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 4px 20px 4px 40px;
+    transition: width 0.4s ease-in-out;
+    border-color: darkgray;
+    align-self: auto;
+}
+
+.text-group input[type="text"]:focus {
+    border-color: black; /* Change border color on focus */
+    box-shadow: 0 0 10px rgba(128, 128, 128, .9);/* Add a subtle glow around the input */
+    outline: none; /* Remove the browser default outline */
+}
+
+label, input[type="text"] {
+    vertical-align: middle;
+    margin-bottom: 7px;
+}
+
+.invalid-input {
+    border: 1px solid red;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.8em;
+    margin-top: 5px;
+}
+
+.tertiary-question-flex {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.tertiary-input::before {
+    content: "Menu options: ";
+}
+
+#attendance-form label {
+    background-color: #ebdfd8;
+    color: #ebdfd8;
+}
+*/
+/* End of RSVP page */
+
+/* Password Entry page */
+
+.password-entry-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+    border-radius: 5px;
+  }
+  
+  .password-entry-container form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .password-entry-container .form-group {
+    margin-bottom: 10px;
+  }
+  
+  .password-entry-container button {
+    cursor: pointer;
+    padding: 10px;
+    border: none;
+    background-color: #e45f00;
+    color: white;
+    border-radius: 5px;
+  }
+  
+  .password-entry-container button:hover {
+    background-color: #e45f00;
+  }
+
+  .error {
+    color: red;
+    font-weight: bold;
+  }
+
+  @media screen and (max-width: 768px) {
+    .password-entry-container {
+        top: 60%;
+    }
+  }
+
+/* End of Password Entry page */
+
+/* Thanks page */
+
+.thanks-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    max-width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+    border-radius: 5px;
+    text-align: center;
+    height: 100%;
+    margin: 50px auto;
+  }
+  
+  .thanks-container button {
+    cursor: pointer;
+    padding: 10px;
+    border: none;
+    background-color: #e45f00;
+    color: white;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .giphy-embed {
+        width: 100%;
+    }
+}
+
+  /* End of Thanks page */
+
+/* Media Queries */
+/* Hide the original navbar on smaller screens */
+@media (max-width: 992px) {
+    .navbar-original {
+      display: none;
+    }
+  }
+
+/* Hide the Bootstrap burger menu on larger screens */
+@media (min-width: 993px) {
+    .navbar {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-original ul li a {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 768px) {
+    #rsvp-button-home button {
+        padding: 10px 8px;
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 768px) {
+    .wedding-schedule:after {
+        width: 60%;
+    }
+}
+
+/* end of Media Queries */
+
+.navbar {
+    background-color: #ebdfd8 !important;
+}
+
+body, html {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.my-container {
+    max-width: 85%;
+    margin: 0 auto;
+    padding: 0 10px;
+}
