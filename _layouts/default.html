@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{ page.title | default: "AuSam" }}</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/styles.css">
 
   </head>
   <body>
@@ -16,12 +16,12 @@
       <!-- Original navbar for larger screens -->
       <nav class="navbar-original">
           <ul>
-              <li><a href="/index.html">Home</a></li>
-              <li><a href="/directions.html">Getting There</a></li>
-              <li><a href="/itinerary.html">3 Day Itinerary</a></li>
-              <li><a href="/photos.html">A&S Photos</a></li>
-              <li><a href="/people.html">Our People</a></li>
-              <li><a href="/info.html">Info</a></li>
+              <li><a href="{{ site.baseurl }}/index.html">Home</a></li>
+              <li><a href="{{ site.baseurl }}/directions.html">Getting There</a></li>
+              <li><a href="{{ site.baseurl }}/itinerary.html">3 Day Itinerary</a></li>
+              <li><a href="{{ site.baseurl }}/photos.html">A&S Photos</a></li>
+              <li><a href="{{ site.baseurl }}/people.html">Our People</a></li>
+              <li><a href="{{ site.baseurl }}/info.html">Info</a></li>
           </ul>
       </nav>
 
@@ -32,12 +32,12 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
-            <li class="nav-item active"><a class="nav-link" href="/index.html">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="/directions.html">Getting There</a></li>
-            <li class="nav-item"><a class="nav-link" href="/itinerary.html">3 Day Itinerary</a></li>
-            <li class="nav-item"><a class="nav-link" href="/photos.html">A&S Photos</a></li>
-            <li class="nav-item"><a class="nav-link" href="/people.html">Our People</a></li>
-            <li class="nav-item"><a class="nav-link" href="/info.html">Info</a></li>
+            <li class="nav-item active"><a class="nav-link" href="/{{ site.baseurl }}/assetsindex.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ site.baseurl }}/directions.html">Getting There</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ site.baseurl }}/itinerary.html">3 Day Itinerary</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ site.baseurl }}/photos.html">A&S Photos</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ site.baseurl }}/people.html">Our People</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ site.baseurl }}/info.html">Info</a></li>
           </ul>
         </div>
       </nav>
